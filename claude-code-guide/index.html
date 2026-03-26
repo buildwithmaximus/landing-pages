@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Use Claude Code — The Complete Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #020617;
+      --bg-2: #0F172A;
+      --bg-3: #1E293B;
+      --border: #334155;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      --green: #22C55E;
+      --green-dim: #16A34A;
+      --green-glow: rgba(34, 197, 94, 0.15);
+      --blue: #38BDF8;
+      --purple: #A78BFA;
+      --yellow: #FCD34D;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Fira Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(2, 6, 23, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Fira Code', monospace;
+      font-size: 15px;
+      color: var(--green);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--text-muted); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 150ms;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--green);
+      color: #000;
+      padding: 8px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 150ms, transform 150ms;
+      cursor: pointer;
+    }
+    .nav-cta:hover { background: #16A34A; transform: translateY(-1px); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(34,197,94,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; max-width: 760px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-glow);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: var(--green);
+      padding: 6px 16px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Fira Code', monospace;
+      margin-bottom: 28px;
+    }
+    .hero-badge-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    h1 .accent { color: var(--green); text-shadow: 0 0 30px rgba(34,197,94,0.4); }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #000;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 150ms, transform 150ms, box-shadow 150ms;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: #16A34A; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(34,197,94,0.3); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color 150ms, background 150ms, transform 150ms;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { border-color: var(--text-muted); background: var(--bg-2); transform: translateY(-2px); }
+
+    .hero-terminal {
+      margin-top: 56px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-align: left;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+    }
+    .terminal-bar {
+      background: var(--bg-3);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .terminal-dot.red { background: #EF4444; }
+    .terminal-dot.yellow { background: var(--yellow); }
+    .terminal-dot.green { background: var(--green); }
+    .terminal-title { font-size: 12px; color: var(--text-dim); margin-left: auto; font-family: 'Fira Code', monospace; }
+    .terminal-body { padding: 20px 24px; font-family: 'Fira Code', monospace; font-size: 13px; line-height: 1.8; }
+    .terminal-line { display: flex; gap: 8px; }
+    .terminal-prompt { color: var(--green); user-select: none; }
+    .terminal-cmd { color: var(--text); }
+    .terminal-output { color: var(--text-muted); padding-left: 20px; }
+    .terminal-comment { color: var(--text-dim); }
+    .terminal-highlight { color: var(--blue); }
+    .terminal-success { color: var(--green); }
+
+    /* SECTIONS */
+    section { padding: 96px 24px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Fira Code', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 56px;
+    }
+
+    /* WHAT IS IT */
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 768px) { .what-grid { grid-template-columns: 1fr; } }
+    .what-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color 200ms, transform 200ms;
+    }
+    .what-card:hover { border-color: rgba(34,197,94,0.3); transform: translateY(-2px); }
+    .what-card-icon {
+      width: 40px; height: 40px;
+      background: var(--green-glow);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      color: var(--green);
+    }
+    .what-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .what-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* STEPS */
+    .steps-section { background: var(--bg-2); }
+    .steps { display: flex; flex-direction: column; gap: 48px; }
+    .step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 600px) { .step { grid-template-columns: 1fr; } .step-number { width: 48px; height: 48px; font-size: 1.1rem; } }
+    .step-number {
+      width: 72px; height: 72px;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fira Code', monospace;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--green);
+      flex-shrink: 0;
+    }
+    .step-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+    .step-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
+    .step-code {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      font-family: 'Fira Code', monospace;
+      font-size: 13px;
+      color: var(--text-muted);
+      overflow-x: auto;
+    }
+    .step-code .cmd { color: var(--text); }
+    .step-code .flag { color: var(--blue); }
+    .step-code .comment { color: var(--text-dim); }
+    .step-code .success { color: var(--green); }
+
+    /* KEY FILES */
+    .files-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .file-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color 200ms;
+    }
+    .file-card:hover { border-color: rgba(34,197,94,0.3); }
+    .file-name {
+      font-family: 'Fira Code', monospace;
+      font-size: 14px;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .file-badge {
+      font-size: 10px;
+      background: var(--green-glow);
+      color: var(--green);
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 600;
+    }
+    .file-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* USE CASES */
+    .use-cases-section { background: var(--bg-2); }
+    .use-cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .use-case-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color 200ms, transform 200ms;
+    }
+    .use-case-card:hover { border-color: rgba(34,197,94,0.3); transform: translateY(-2px); }
+    .use-case-icon {
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+    .use-case-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .use-case-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* TIPS */
+    .tips-list { display: flex; flex-direction: column; gap: 16px; }
+    .tip {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      transition: border-color 200ms;
+    }
+    .tip:hover { border-color: rgba(34,197,94,0.3); }
+    .tip-icon { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+    .tip h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .tip p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(56,189,248,0.05) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .cta-section h2 { margin-bottom: 16px; }
+    .cta-section p { color: var(--text-muted); max-width: 480px; margin: 0 auto 40px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Fira Code', monospace;
+      font-size: 14px;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    footer p { font-size: 13px; color: var(--text-dim); }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">claude<span>/</span>code</a>
+  <ul class="nav-links">
+    <li><a href="#what">What is it</a></li>
+    <li><a href="#setup">Setup</a></li>
+    <li><a href="#files">Key Files</a></li>
+    <li><a href="#use-cases">Use Cases</a></li>
+    <li><a href="#tips">Tips</a></li>
+  </ul>
+  <a href="https://claude.ai/code" target="_blank" rel="noopener" class="nav-cta">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      From terminal to production
+    </div>
+    <h1>The AI agent that <span class="accent">lives in your terminal</span></h1>
+    <p class="hero-sub">Claude Code reads your codebase, edits files, runs commands, and ships features — all from natural language instructions. No switching tabs. No copy-pasting. Just describe what you want.</p>
+    <div class="hero-actions">
+      <a href="#setup" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        Start Setup
+      </a>
+      <a href="#what" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Learn More
+      </a>
+    </div>
+    <div class="hero-terminal">
+      <div class="terminal-bar">
+        <div class="terminal-dot red"></div>
+        <div class="terminal-dot yellow"></div>
+        <div class="terminal-dot green"></div>
+        <span class="terminal-title">~/your-project</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd"> npm install -g @anthropic-ai/claude-code</span></div>
+        <div class="terminal-output terminal-success">✓ Installed claude-code@1.0.0</div>
+        <br>
+        <div class="terminal-line"><span class="terminal-prompt">$</span><span class="terminal-cmd"> claude</span></div>
+        <div class="terminal-output terminal-highlight">✻ Claude Code initialized</div>
+        <div class="terminal-output">Reading your codebase...</div>
+        <br>
+        <div class="terminal-line"><span class="terminal-prompt">&gt;</span><span class="terminal-cmd"> Add a dark mode toggle to the navbar</span></div>
+        <div class="terminal-output terminal-success">✓ Modified components/Navbar.jsx</div>
+        <div class="terminal-output terminal-success">✓ Updated styles/globals.css</div>
+        <div class="terminal-output terminal-success">✓ Added useTheme hook</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IT -->
+<section id="what">
+  <div class="container">
+    <div class="section-label">// what is claude code</div>
+    <h2>Not a chatbot. An agent that <em>does</em> things.</h2>
+    <p class="section-sub">Claude Code runs in your terminal and has direct access to your files, your git history, and your shell. It understands context. It takes action.</p>
+    <div class="what-grid">
+      <div class="what-card">
+        <div class="what-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Reads your entire codebase</h3>
+        <p>Claude Code understands your project structure, existing patterns, dependencies, and conventions before it writes a single line.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <h3>Edits files directly</h3>
+        <p>No copy-pasting. Claude Code makes targeted edits to your files — one change at a time, or across multiple files in a single step.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Runs shell commands</h3>
+        <p>It can install packages, run tests, start servers, and execute scripts. It sees the output and adapts if something goes wrong.</p>
+      </div>
+      <div class="what-card">
+        <div class="what-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M4.22 4.22l2.12 2.12m11.32 11.32 2.12 2.12M2 12h3m14 0h3M4.22 19.78l2.12-2.12m11.32-11.32 2.12-2.12"/></svg>
+        </div>
+        <h3>Persistent across sessions</h3>
+        <p>With a CLAUDE.md file, Claude Code carries your project context, preferences, and conventions into every session automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SETUP STEPS -->
+<section id="setup" class="steps-section">
+  <div class="container">
+    <div class="section-label">// setup guide</div>
+    <h2>From zero to running in 5 minutes</h2>
+    <p class="section-sub">You need Node.js and a Claude subscription. That's it.</p>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <h3>Install Claude Code</h3>
+          <p>Install the CLI globally via npm. Requires Node.js 18+.</p>
+          <div class="step-code">
+            <span class="cmd">npm install -g @anthropic-ai/claude-code</span><br>
+            <span class="comment"># Verify installation</span><br>
+            <span class="cmd">claude --version</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <h3>Authenticate</h3>
+          <p>Sign in with your Anthropic account. Claude Pro or Max subscription required.</p>
+          <div class="step-code">
+            <span class="cmd">claude auth login</span><br>
+            <span class="success"># Opens browser → sign in with claude.ai account</span><br>
+            <span class="success">✓ Authenticated as you@example.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <h3>Open your project</h3>
+          <p>Navigate to any project folder and launch Claude Code. It will read the codebase automatically.</p>
+          <div class="step-code">
+            <span class="cmd">cd ~/your-project</span><br>
+            <span class="cmd">claude</span><br>
+            <span class="success">✻ Initialized. Reading codebase...</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">04</div>
+        <div class="step-content">
+          <h3>Create your CLAUDE.md</h3>
+          <p>This file gives Claude persistent context about your project. It loads automatically every session.</p>
+          <div class="step-code">
+            <span class="comment"># CLAUDE.md — project context for Claude Code</span><br><br>
+            <span class="cmd">## Project</span><br>
+            <span class="flag">Next.js 14 app using TypeScript + Tailwind.</span><br>
+            <span class="flag">API routes in /app/api/, components in /components/</span><br><br>
+            <span class="cmd">## Rules</span><br>
+            <span class="flag">- Always use TypeScript, never plain JS</span><br>
+            <span class="flag">- Run `npm test` after every change</span><br>
+            <span class="flag">- Never modify .env files directly</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">05</div>
+        <div class="step-content">
+          <h3>Give your first instruction</h3>
+          <p>Talk to it like a senior developer. Be specific about what you want. It will ask if it needs clarification.</p>
+          <div class="step-code">
+            <span class="comment"># Examples of good first instructions</span><br><br>
+            <span class="flag">"Add input validation to the signup form with error messages"</span><br>
+            <span class="flag">"Refactor the UserCard component to use our design system"</span><br>
+            <span class="flag">"Find all console.log statements and remove them before production"</span><br>
+            <span class="flag">"Write unit tests for the auth module"</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- KEY FILES -->
+<section id="files">
+  <div class="container">
+    <div class="section-label">// key files</div>
+    <h2>The files that make Claude Code yours</h2>
+    <p class="section-sub">Three files. Master these and you have a fully personalized AI agent that works exactly the way you want.</p>
+    <div class="files-grid">
+      <div class="file-card">
+        <div class="file-name">
+          CLAUDE.md
+          <span class="file-badge">Required</span>
+        </div>
+        <p>Project-level context. Describes your tech stack, folder structure, conventions, and rules. Lives in the project root. Loaded every session automatically.</p>
+      </div>
+      <div class="file-card">
+        <div class="file-name">
+          .claude/CLAUDE.md
+          <span class="file-badge">Global</span>
+        </div>
+        <p>Your personal global context. Preferences, style rules, and defaults that apply across every project. Think of it as your personal developer profile.</p>
+      </div>
+      <div class="file-card">
+        <div class="file-name">
+          .claude/skills/
+          <span class="file-badge">Skills</span>
+        </div>
+        <p>Reusable slash-command workflows. Each folder is a skill — type <code style="color:var(--green);font-family:'Fira Code',monospace">/skill-name</code> and Claude runs it. Perfect for repeated tasks.</p>
+      </div>
+      <div class="file-card">
+        <div class="file-name">
+          .mcp.json
+          <span class="file-badge">Integrations</span>
+        </div>
+        <p>Model Context Protocol config. Connects Claude Code to external tools — databases, APIs, Notion, GitHub, Slack — expanding what it can access and control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section id="use-cases" class="use-cases-section">
+  <div class="container">
+    <div class="section-label">// use cases</div>
+    <h2>What people actually use it for</h2>
+    <p class="section-sub">From solo founders to enterprise teams — real workflows that save hours every day.</p>
+    <div class="use-cases-grid">
+      <div class="use-case-card">
+        <div class="use-case-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Code Generation</h3>
+        <p>Build full features from a description. Claude reads your codebase first so the output fits your patterns, not generic boilerplate.</p>
+      </div>
+      <div class="use-case-card">
+        <div class="use-case-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Debugging</h3>
+        <p>Paste an error or describe a bug. Claude traces through your code, finds the cause, and proposes a fix — showing exactly what it's changing.</p>
+      </div>
+      <div class="use-case-card">
+        <div class="use-case-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Refactoring</h3>
+        <p>Modernize legacy code, extract components, rename across files, clean up dead code. All at once, reviewed before applying.</p>
+      </div>
+      <div class="use-case-card">
+        <div class="use-case-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Testing</h3>
+        <p>Write unit tests, integration tests, and edge case coverage. Describe what you want tested — Claude handles the boilerplate.</p>
+      </div>
+      <div class="use-case-card">
+        <div class="use-case-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <h3>Agentic Workflows</h3>
+        <p>Chain tasks together with skills. Automate your entire deploy pipeline, content generation, or data processing with a single command.</p>
+      </div>
+      <div class="use-case-card">
+        <div class="use-case-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Documentation</h3>
+        <p>Generate README files, API docs, inline comments, and changelogs directly from your codebase. Always accurate, always up to date.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRO TIPS -->
+<section id="tips">
+  <div class="container">
+    <div class="section-label">// pro tips</div>
+    <h2>Get more out of every session</h2>
+    <p class="section-sub">Small habits that dramatically improve the quality of what Claude Code produces.</p>
+    <div class="tips-list">
+      <div class="tip">
+        <div class="tip-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div>
+          <h4>Be specific, not vague</h4>
+          <p>"Add dark mode" is vague. "Add a dark mode toggle in the top-right of the navbar that saves preference to localStorage and respects prefers-color-scheme" is actionable. The more context you give, the better the output.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div>
+          <h4>Keep CLAUDE.md updated</h4>
+          <p>Every time you establish a new convention or catch a mistake, add it to CLAUDE.md. It compounds — the more you teach it, the less you need to explain. Treat it like a living document.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div>
+          <h4>Review before accepting</h4>
+          <p>Claude Code shows you exactly what it plans to change before applying. Always read the diff. It's usually right — but you're the decision-maker, not the agent.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <div>
+          <h4>Build skills for repetitive tasks</h4>
+          <p>If you explain a workflow more than twice, turn it into a skill file. Store it in .claude/skills/. From that point on, one slash command runs the whole thing reliably.</p>
+        </div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <h4>Keep secrets out of the workspace</h4>
+          <p>Never hardcode API keys or tokens in files Claude Code can read. Use .env files and reference them by variable name. What Claude reads, Claude can output.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-label">// get started</div>
+    <h2>Your terminal, now with an AI co-pilot</h2>
+    <p>Install Claude Code in under 5 minutes. You need Node.js and a Claude subscription. No configuration, no API keys, no setup complexity.</p>
+    <div class="hero-actions">
+      <a href="https://claude.ai/code" target="_blank" rel="noopener" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Get Claude Code
+      </a>
+      <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" rel="noopener" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Read the Docs
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">claude/code guide</div>
+  <p>Built by <a href="https://github.com/buildwithmaximus" target="_blank">buildwithmaximus</a> · <a href="../">More pages</a></p>
+</footer>
+
+</body>
+</html>
