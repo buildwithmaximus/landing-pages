@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הפיכת חדר לממ"ד — המדריך המלא</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0F1E;
+      --bg-2: #111827;
+      --bg-3: #1F2937;
+      --border: #374151;
+      --text: #F9FAFB;
+      --text-muted: #9CA3AF;
+      --text-dim: #6B7280;
+      --blue: #3B82F6;
+      --blue-dim: #1D4ED8;
+      --blue-glow: rgba(59,130,246,0.12);
+      --red: #EF4444;
+      --red-dim: rgba(239,68,68,0.12);
+      --green: #10B981;
+      --yellow: #F59E0B;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Heebo', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 15, 30, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 16px;
+      color: var(--text);
+      font-weight: 800;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-shield {
+      width: 32px; height: 32px;
+      background: var(--blue-glow);
+      border: 1px solid var(--blue);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue);
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 150ms;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-alert {
+      background: var(--red);
+      color: white;
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 150ms;
+      cursor: pointer;
+    }
+    .nav-alert:hover { background: #DC2626; }
+
+    @media (max-width: 768px) { .nav-links { display: none; } }
+
+    /* HERO */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 30% 50%, rgba(59,130,246,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 56px 56px;
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+    }
+    @media (max-width: 768px) { .hero-inner { grid-template-columns: 1fr; gap: 40px; } }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red-dim);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: var(--red);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .badge-dot { width: 7px; height: 7px; background: var(--red); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+    h1 .accent { color: var(--blue); }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue);
+      color: white;
+      padding: 13px 26px;
+      border-radius: var(--radius-sm);
+      font-size: 15px; font-weight: 700;
+      text-decoration: none;
+      transition: background 150ms, transform 150ms, box-shadow 150ms;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--blue-dim); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,0.3); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 13px 26px;
+      border-radius: var(--radius-sm);
+      font-size: 15px; font-weight: 600;
+      text-decoration: none;
+      transition: border-color 150ms, background 150ms, transform 150ms;
+      cursor: pointer;
+    }
+    .btn-outline:hover { border-color: var(--text-muted); background: var(--bg-2); transform: translateY(-2px); }
+
+    /* HERO VISUAL */
+    .hero-visual {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+    }
+    .room-diagram {
+      width: 100%;
+      aspect-ratio: 1;
+      position: relative;
+      background: var(--bg-3);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+    .room-wall {
+      position: absolute;
+      background: var(--blue);
+      opacity: 0.7;
+    }
+    .room-wall.top { top: 0; left: 0; right: 0; height: 18px; }
+    .room-wall.bottom { bottom: 0; left: 0; right: 0; height: 18px; }
+    .room-wall.left { top: 0; left: 0; bottom: 0; width: 18px; }
+    .room-wall.right { top: 0; right: 0; bottom: 0; width: 18px; }
+
+    .room-door {
+      position: absolute;
+      bottom: 18px;
+      right: 25%;
+      width: 50px;
+      height: 18px;
+      background: var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; font-weight: 700; color: #000;
+    }
+    .room-window {
+      position: absolute;
+      top: 18px;
+      left: 30%;
+      width: 60px;
+      height: 18px;
+      background: var(--blue);
+      opacity: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; font-weight: 700; color: white;
+    }
+    .room-label {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .room-label span { display: block; font-size: 22px; color: var(--blue); font-weight: 900; }
+
+    .spec-items { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+    .spec-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px;
+    }
+    .spec-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .spec-dot.blue { background: var(--blue); }
+    .spec-dot.yellow { background: var(--yellow); }
+    .spec-dot.green { background: var(--green); }
+    .spec-dot.red { background: var(--red); }
+    .spec-label { color: var(--text-muted); flex: 1; }
+    .spec-value { font-weight: 700; color: var(--text); }
+
+    /* SECTIONS */
+    section { padding: 88px 24px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    /* ALERT BOX */
+    .alert-box {
+      background: var(--red-dim);
+      border: 1px solid rgba(239,68,68,0.35);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 48px;
+    }
+    .alert-icon { color: var(--red); flex-shrink: 0; margin-top: 2px; }
+    .alert-box strong { color: var(--red); display: block; margin-bottom: 4px; font-size: 15px; }
+    .alert-box p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* REQUIREMENTS GRID */
+    .req-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .req-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color 200ms, transform 200ms;
+    }
+    .req-card:hover { border-color: rgba(59,130,246,0.4); transform: translateY(-2px); }
+    .req-card-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px;
+    }
+    .req-icon {
+      width: 40px; height: 40px;
+      background: var(--blue-glow);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    .req-card h3 { font-size: 1rem; font-weight: 700; }
+    .req-specs { display: flex; flex-direction: column; gap: 8px; }
+    .req-spec {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 12px;
+      background: var(--bg-3);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+    }
+    .req-spec-label { color: var(--text-muted); }
+    .req-spec-value { font-weight: 700; color: var(--text); }
+    .req-spec-value.highlight { color: var(--blue); }
+    .req-spec-value.warn { color: var(--yellow); }
+    .req-spec-value.danger { color: var(--red); }
+
+    /* STEPS */
+    .steps-section { background: var(--bg-2); }
+    .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .steps::before {
+      content: '';
+      position: absolute;
+      right: 35px;
+      top: 36px;
+      bottom: 36px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), transparent);
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 24px;
+      align-items: flex-start;
+      padding-bottom: 40px;
+      position: relative;
+    }
+    .step:last-child { padding-bottom: 0; }
+    @media (max-width: 600px) { .step { grid-template-columns: 1fr; } .steps::before { display: none; } }
+    .step-num {
+      width: 72px; height: 72px;
+      background: var(--bg-3);
+      border: 2px solid var(--blue);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; font-weight: 900;
+      color: var(--blue);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; padding-top: 16px; }
+    .step p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+    .step-tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .step-tag.fast { background: rgba(16,185,129,0.15); color: var(--green); }
+    .step-tag.slow { background: rgba(245,158,11,0.15); color: var(--yellow); }
+    .step-tag.important { background: var(--red-dim); color: var(--red); }
+
+    /* COSTS */
+    .cost-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .cost-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+    }
+    .cost-size {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    .cost-range {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--blue);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .cost-sqm { font-size: 12px; color: var(--text-dim); }
+
+    .cost-note {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .cost-note-icon { color: var(--green); flex-shrink: 0; }
+
+    /* CHECKLIST */
+    .checklist-section { background: var(--bg-2); }
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 768px) { .checklist-grid { grid-template-columns: 1fr; } }
+    .checklist-group {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .checklist-group h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .check-items { display: flex; flex-direction: column; gap: 10px; }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .check-box {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .check-box.done { border-color: var(--green); background: rgba(16,185,129,0.15); }
+    .check-box.done svg { color: var(--green); }
+
+    /* WARNING SECTION */
+    .warnings-section { }
+    .warnings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .warning-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-right: 3px solid var(--red);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+    .warning-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; color: var(--red); }
+    .warning-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(59,130,246,0.07) 0%, rgba(16,185,129,0.05) 100%);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .cta-section h2 { margin-bottom: 12px; }
+    .cta-section p { color: var(--text-muted); max-width: 480px; margin: 0 auto 36px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 36px 24px;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: var(--text-dim); }
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+    .footer-disclaimer {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 12px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-shield">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    מדריך הממ"ד
+  </a>
+  <ul class="nav-links">
+    <li><a href="#requirements">דרישות</a></li>
+    <li><a href="#process">תהליך</a></li>
+    <li><a href="#costs">עלויות</a></li>
+    <li><a href="#checklist">צ'קליסט</a></li>
+    <li><a href="#warnings">אזהרות</a></li>
+  </ul>
+  <a href="https://www.oref.org.il" target="_blank" rel="noopener" class="nav-alert">פיקוד העורף</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        תקן 4422 — פיקוד העורף
+      </div>
+      <h1>הפיכת חדר רגיל ל<span class="accent">ממ"ד תקני</span></h1>
+      <p class="hero-sub">כל מה שצריך לדעת: תקנים, עובי קירות, דלתות, חלונות, אוורור, עלויות, תהליך הרישוי — מדריך מלא לפי דרישות פיקוד העורף.</p>
+      <div class="hero-actions">
+        <a href="#requirements" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          לדרישות התקן
+        </a>
+        <a href="#costs" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          עלויות
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="room-diagram">
+        <div class="room-wall top"></div>
+        <div class="room-wall bottom"></div>
+        <div class="room-wall left"></div>
+        <div class="room-wall right"></div>
+        <div class="room-window">חלון מוגן</div>
+        <div class="room-door">דלת פלדה</div>
+        <div class="room-label">
+          <span>ממ"ד</span>
+          מינימום 9 מ"ר
+        </div>
+      </div>
+      <div class="spec-items">
+        <div class="spec-item">
+          <div class="spec-dot blue"></div>
+          <span class="spec-label">עובי קירות חיצוניים</span>
+          <span class="spec-value">25 ס"מ מינימום</span>
+        </div>
+        <div class="spec-item">
+          <div class="spec-dot blue"></div>
+          <span class="spec-label">עובי קירות פנימיים</span>
+          <span class="spec-value">20 ס"מ מינימום</span>
+        </div>
+        <div class="spec-item">
+          <div class="spec-dot yellow"></div>
+          <span class="spec-label">דלת</span>
+          <span class="spec-value">פלדה, אטומה, תקנית</span>
+        </div>
+        <div class="spec-item">
+          <div class="spec-dot green"></div>
+          <span class="spec-label">שטח מינימלי</span>
+          <span class="spec-value">9 מ"ר</span>
+        </div>
+        <div class="spec-item">
+          <div class="spec-dot red"></div>
+          <span class="spec-label">קירות חיצוניים מקסימום</span>
+          <span class="spec-value">2 בלבד</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section id="requirements">
+  <div class="container">
+    <div class="section-label">// תקן 4422 — פיקוד העורף</div>
+    <h2>דרישות התקן המלאות</h2>
+    <p class="section-sub">כל הדרישות הטכניות לממ"ד תקני לפי פיקוד העורף ותקן ישראלי 4422.</p>
+
+    <div class="alert-box">
+      <div class="alert-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div>
+        <strong>לא כל חדר מתאים להסבה לממ"ד</strong>
+        <p>לפני כל תכנון — יש לבצע בדיקה הנדסית. מהנדס מבנים מוסמך חייב לאשר את היתכנות ההסבה. חדר לא מתאים יכול להיות מסוכן יותר מחדר רגיל.</p>
+      </div>
+    </div>
+
+    <div class="req-grid">
+      <div class="req-card">
+        <div class="req-card-header">
+          <div class="req-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+          </div>
+          <h3>קירות ותקרה</h3>
+        </div>
+        <div class="req-specs">
+          <div class="req-spec"><span class="req-spec-label">קירות חיצוניים</span><span class="req-spec-value highlight">25 ס"מ בטון מזוין</span></div>
+          <div class="req-spec"><span class="req-spec-label">קירות פנימיים</span><span class="req-spec-value highlight">20 ס"מ בטון מזוין</span></div>
+          <div class="req-spec"><span class="req-spec-label">תקרה</span><span class="req-spec-value highlight">25 ס"מ בטון מזוין</span></div>
+          <div class="req-spec"><span class="req-spec-label">מקסימום קירות חיצוניים</span><span class="req-spec-value danger">2 קירות בלבד</span></div>
+          <div class="req-spec"><span class="req-spec-label">עמודים בתוך הממ"ד</span><span class="req-spec-value danger">אסור לחלוטין</span></div>
+        </div>
+      </div>
+
+      <div class="req-card">
+        <div class="req-card-header">
+          <div class="req-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9v10a2 2 0 002 2h14a2 2 0 002-2V9"/><path d="M1 9h22M9 22V12h6v10"/></svg>
+          </div>
+          <h3>שטח וממדים</h3>
+        </div>
+        <div class="req-specs">
+          <div class="req-spec"><span class="req-spec-label">שטח מינימלי</span><span class="req-spec-value highlight">9 מ"ר</span></div>
+          <div class="req-spec"><span class="req-spec-label">גובה מינימלי</span><span class="req-spec-value highlight">2.5 מטר</span></div>
+          <div class="req-spec"><span class="req-spec-label">מינימום לאדם</span><span class="req-spec-value">1.25 מ"ר</span></div>
+          <div class="req-spec"><span class="req-spec-label">ממ"ד מינימלי (יוצא דופן)</span><span class="req-spec-value warn">5 מ"ר / 12.5 מ"ק</span></div>
+          <div class="req-spec"><span class="req-spec-label">הרחבה מאפשרת (2025)</span><span class="req-spec-value">עד 12 מ"ר + 3 מ"ר שירותים</span></div>
+        </div>
+      </div>
+
+      <div class="req-card">
+        <div class="req-card-header">
+          <div class="req-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </div>
+          <h3>דלת</h3>
+        </div>
+        <div class="req-specs">
+          <div class="req-spec"><span class="req-spec-label">חומר</span><span class="req-spec-value highlight">פלדה מלאה, כבדה</span></div>
+          <div class="req-spec"><span class="req-spec-label">אטימות</span><span class="req-spec-value highlight">אטומה לגז ולאבק</span></div>
+          <div class="req-spec"><span class="req-spec-label">פתיחה</span><span class="req-spec-value">פנימה (להרים ידית 90°)</span></div>
+          <div class="req-spec"><span class="req-spec-label">תקן</span><span class="req-spec-value highlight">ת"י 4422 — חובה</span></div>
+          <div class="req-spec"><span class="req-spec-label">קידוח / קיצור</span><span class="req-spec-value danger">אסור לחלוטין</span></div>
+        </div>
+      </div>
+
+      <div class="req-card">
+        <div class="req-card-header">
+          <div class="req-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          </div>
+          <h3>חלון</h3>
+        </div>
+        <div class="req-specs">
+          <div class="req-spec"><span class="req-spec-label">חלון חיצוני</span><span class="req-spec-value highlight">תריס פלדה, עמיד רסיסים</span></div>
+          <div class="req-spec"><span class="req-spec-label">חלון פנימי</span><span class="req-spec-value">זכוכית רגילה</span></div>
+          <div class="req-spec"><span class="req-spec-label">גובה מרצפה</span><span class="req-spec-value warn">מינימום 1.5 מטר</span></div>
+          <div class="req-spec"><span class="req-spec-label">שמשות ישנות</span><span class="req-spec-value danger">להוציא בחירום</span></div>
+          <div class="req-spec"><span class="req-spec-label">סורגים</span><span class="req-spec-value danger">אסורים לחלוטין</span></div>
+        </div>
+      </div>
+
+      <div class="req-card">
+        <div class="req-card-header">
+          <div class="req-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V12M12 12C12 12 7 10 7 5a5 5 0 0110 0c0 5-5 7-5 7z"/></svg>
+          </div>
+          <h3>אוורור וסינון</h3>
+        </div>
+        <div class="req-specs">
+          <div class="req-spec"><span class="req-spec-label">שסתום פיצוץ</span><span class="req-spec-value highlight">חובה</span></div>
+          <div class="req-spec"><span class="req-spec-label">מערכת סינון (מ-2010)</span><span class="req-spec-value highlight">תקן 4570</span></div>
+          <div class="req-spec"><span class="req-spec-label">הגנה</span><span class="req-spec-value">כימי / ביולוגי / קרינה</span></div>
+          <div class="req-spec"><span class="req-spec-label">צנרת</span><span class="req-spec-value">דרך קיר פנימי בלבד</span></div>
+          <div class="req-spec"><span class="req-spec-label">חיבור מזגן</span><span class="req-spec-value">תקן 994 בלבד</span></div>
+        </div>
+      </div>
+
+      <div class="req-card">
+        <div class="req-card-header">
+          <div class="req-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3>חשמל ותקשורת</h3>
+        </div>
+        <div class="req-specs">
+          <div class="req-spec"><span class="req-spec-label">שקעי חשמל</span><span class="req-spec-value highlight">לפחות 3</span></div>
+          <div class="req-spec"><span class="req-spec-label">טלפון</span><span class="req-spec-value">לפחות 2 נקודות</span></div>
+          <div class="req-spec"><span class="req-spec-label">טלוויזיה / רדיו</span><span class="req-spec-value">נקודת חיבור</span></div>
+          <div class="req-spec"><span class="req-spec-label">תאורה</span><span class="req-spec-value">פלואורסנטית מוגנת מים</span></div>
+          <div class="req-spec"><span class="req-spec-label">גישה</span><span class="req-spec-value">מתוך הדירה בלבד</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="steps-section">
+  <div class="container">
+    <div class="section-label">// תהליך ההסבה</div>
+    <h2>מה עושים ובאיזה סדר</h2>
+    <p class="section-sub">מהייעוץ הראשוני עד לאישור הסופי — בין 2 ל-4 חודשים. כל שלב חשוב.</p>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>בחירת חדר והערכה הנדסית</h3>
+          <p>מהנדס מבנים מוסמך בודק את החדר הנבחר: עובי קירות קיים, מיקום בבניין, מספר קירות חיצוניים, מעבר עמודים. לא כל חדר מתאים. חדר פינתי עם 2 קירות חיצוניים הוא הכי נפוץ ויעיל.</p>
+          <span class="step-tag fast">⏱ שבוע אחד</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>קבלת אישורים ורישיון</h3>
+          <p>בבתים צמודי קרקע ובמבנים עד 2 קומות — ניתן לבקש מסלול מהיר ללא היתר בנייה (בתוקף עד אוקטובר 2026). בבניין רב קומות — נדרש אישור ועד הבית (60% מהדיירים) + היתר עירייה. פיקוד העורף מגיב תוך 14 ימים.</p>
+          <span class="step-tag slow">⏱ 2-6 שבועות</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>בחירת קבלן מנוסה בממ"ד</h3>
+          <p>חובה לעבוד עם קבלן שיש לו ניסיון ספציפי בבניית ממ"דים. לא כל קבלן שיפוצים מתאים — קוד הבנייה למרחבים מוגנים הוא טכני ביותר. קבלו לפחות 3 הצעות מחיר, בקשו רפרנסים.</p>
+          <span class="step-tag important">⚠ קריטי</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h3>בנייה ושיפוץ</h3>
+          <p>חיזוק קירות בבטון מזוין, יציקת תקרה, התקנת דלת פלדה תקנית, חלון מוגן רסיסים, מערכת אוורור ושסתומי פיצוץ, תשתיות חשמל ותקשורת. קונסטרוקטור מגיע מספר פעמים לאורך הבנייה לפיקוח.</p>
+          <span class="step-tag slow">⏱ 4-8 שבועות</span>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <h3>בדיקה ואישור סופי</h3>
+          <p>קונסטרוקטור מוסמך בודק את כל המרחב ומעניק אישור סופי. תוך 45 ימים מסיום העבודה יש לעדכן את רשות הרישוי ופיקוד העורף ולצרף את כל המסמכים המעידים על עמידה בתקנים.</p>
+          <span class="step-tag fast">⏱ שבוע-שבועיים</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COSTS -->
+<section id="costs">
+  <div class="container">
+    <div class="section-label">// עלויות משוערות</div>
+    <h2>כמה זה עולה?</h2>
+    <p class="section-sub">עלויות להסבת חדר קיים לממ"ד תקני, נכון ל-2026. המחירים כוללים עבודה וחומרים.</p>
+    <div class="cost-grid">
+      <div class="cost-card">
+        <div class="cost-size">חדר קטן</div>
+        <div class="cost-range">₪80,000–120,000</div>
+        <div class="cost-sqm">עד 9 מ"ר</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-size">חדר בינוני</div>
+        <div class="cost-range">₪120,000–160,000</div>
+        <div class="cost-sqm">9–12 מ"ר</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-size">חדר גדול</div>
+        <div class="cost-range">₪160,000–200,000+</div>
+        <div class="cost-sqm">מעל 12 מ"ר</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-size">היתר בנייה</div>
+        <div class="cost-range">₪15,000–25,000</div>
+        <div class="cost-sqm">כאשר נדרש</div>
+      </div>
+    </div>
+    <div class="cost-note">
+      <div class="cost-note-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <p><strong style="color:var(--text)">ממ"ד מוסיף ערך לנכס:</strong> ממ"ד תקני מעלה את ערך הדירה ב-₪200,000–300,000 בממוצע — לעתים קרובות יותר מעלות ההסבה עצמה. דירות ללא ממ"ד נמכרות לאט יותר ובמחיר נמוך יותר.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section id="checklist" class="checklist-section">
+  <div class="container">
+    <div class="section-label">// צ'קליסט</div>
+    <h2>כל מה שצריך לבדוק</h2>
+    <p class="section-sub">השתמשו ברשימה הזו לפני, במהלך ואחרי ההסבה.</p>
+    <div class="checklist-grid">
+      <div class="checklist-group">
+        <h3>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          לפני הבנייה
+        </h3>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span>בדיקת התאמת החדר ע"י מהנדס מבנים</span></div>
+          <div class="check-item"><div class="check-box"></div><span>אישור פיקוד העורף / היתר בנייה</span></div>
+          <div class="check-item"><div class="check-box"></div><span>אישור ועד הבית (בבניין רב קומות)</span></div>
+          <div class="check-item"><div class="check-box"></div><span>3 הצעות מחיר מקבלנים מנוסים</span></div>
+          <div class="check-item"><div class="check-box"></div><span>בדיקה שאין עמודים בחדר</span></div>
+          <div class="check-item"><div class="check-box"></div><span>בדיקת מקסימום 2 קירות חיצוניים</span></div>
+        </div>
+      </div>
+      <div class="checklist-group">
+        <h3>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          קירות ומבנה
+        </h3>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span>קירות חיצוניים 25 ס"מ בטון מזוין</span></div>
+          <div class="check-item"><div class="check-box"></div><span>קירות פנימיים 20 ס"מ בטון מזוין</span></div>
+          <div class="check-item"><div class="check-box"></div><span>תקרה 25 ס"מ בטון מזוין</span></div>
+          <div class="check-item"><div class="check-box"></div><span>שטח מינימלי 9 מ"ר</span></div>
+          <div class="check-item"><div class="check-box"></div><span>גובה מינימלי 2.5 מטר</span></div>
+          <div class="check-item"><div class="check-box"></div><span>גישה ישירה מהדירה (לא דרך חדר מדרגות)</span></div>
+        </div>
+      </div>
+      <div class="checklist-group">
+        <h3>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/></svg>
+          דלת וחלון
+        </h3>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span>דלת פלדה תקנית (ת"י 4422)</span></div>
+          <div class="check-item"><div class="check-box"></div><span>דלת אטומה לגז, נפתחת פנימה</span></div>
+          <div class="check-item"><div class="check-box"></div><span>לא לקדוח / לא לקצר את הידית</span></div>
+          <div class="check-item"><div class="check-box"></div><span>חלון מוגן רסיסים עם תריס פלדה</span></div>
+          <div class="check-item"><div class="check-box"></div><span>גובה חלון מינימום 1.5 מ' מהרצפה</span></div>
+          <div class="check-item"><div class="check-box"></div><span>ללא סורגים על החלון</span></div>
+        </div>
+      </div>
+      <div class="checklist-group">
+        <h3>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          מערכות ואישור סופי
+        </h3>
+        <div class="check-items">
+          <div class="check-item"><div class="check-box"></div><span>שסתום פיצוץ מותקן</span></div>
+          <div class="check-item"><div class="check-box"></div><span>מערכת סינון אוויר (תקן 4570)</span></div>
+          <div class="check-item"><div class="check-box"></div><span>3+ שקעי חשמל, 2 נקודות טלפון</span></div>
+          <div class="check-item"><div class="check-box"></div><span>תאורה פלואורסנטית מוגנת מים</span></div>
+          <div class="check-item"><div class="check-box"></div><span>בדיקת קונסטרוקטור — אישור סופי</span></div>
+          <div class="check-item"><div class="check-box"></div><span>עדכון רשות הרישוי ופיקוד העורף תוך 45 יום</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WARNINGS -->
+<section id="warnings">
+  <div class="container">
+    <div class="section-label">// שגיאות נפוצות</div>
+    <h2>מה שאסור לעשות</h2>
+    <p class="section-sub">שגיאות נפוצות שהופכות ממ"ד לא תקני — ולעתים מסוכן יותר מחדר רגיל.</p>
+    <div class="warnings-grid">
+      <div class="warning-card">
+        <h4>סורגים על החלון</h4>
+        <p>החלון משמש גם כמוצא חירום. סורגים הופכים אתכם לכלואים בפנים במקרה שהדלת נחסמת. אסורים לחלוטין.</p>
+      </div>
+      <div class="warning-card">
+        <h4>קידוח בדלת</h4>
+        <p>דלת הממ"ד חייבת להיות אטומה לחלוטין. כל קידוח — לו כבלים, מזוזה, או כל דבר אחר — מבטל את אטימותה.</p>
+      </div>
+      <div class="warning-card">
+        <h4>יותר מ-2 קירות חיצוניים</h4>
+        <p>ממ"ד עם 3 קירות חיצוניים חשוף הרבה יותר. לפי התקן — מותרים 2 קירות חיצוניים לכל היותר.</p>
+      </div>
+      <div class="warning-card">
+        <h4>קבלן ללא ניסיון בממ"ד</h4>
+        <p>קבלן שיפוצים רגיל לא מספיק. חייב ניסיון ספציפי בממ"דים. בקשו רפרנסים ועבודות קודמות.</p>
+      </div>
+      <div class="warning-card">
+        <h4>לדלג על ההיתר</h4>
+        <p>ממ"ד ללא היתר לא מוכר חוקית כממ"ד — לא מגן עליכם משפטית ולא מוסיף ערך לנכס. ולא תוכלו למכור.</p>
+      </div>
+      <div class="warning-card">
+        <h4>לא לעדכן את פיקוד העורף</h4>
+        <p>תוך 45 יום מסיום הבנייה חובה לדווח לפיקוד העורף ולרשות הרישוי. בלי זה — הממ"ד לא קיים במערכות.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-label">// מידע נוסף</div>
+    <h2>פיקוד העורף — המקור הרשמי</h2>
+    <p>כל המידע העדכני ביותר, טפסי בקשה, ורשימת קבלנים מאושרים זמין באתר פיקוד העורף הרשמי.</p>
+    <div class="hero-actions" style="justify-content:center;">
+      <a href="https://www.oref.org.il" target="_blank" rel="noopener" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        אתר פיקוד העורף
+      </a>
+      <a href="https://www.oref.org.il/eng/articles/info/preparing-protected-space/1212/" target="_blank" rel="noopener" class="btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        הנחיות באנגלית
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>נבנה ע"י <a href="https://github.com/buildwithmaximus" target="_blank">buildwithmaximus</a> · <a href="../">עמודים נוספים</a></p>
+  <p class="footer-disclaimer">המידע באתר זה מבוסס על פרסומי פיקוד העורף ותקן ישראלי 4422, ומיועד למטרות מידע בלבד. לפני כל פעולה — יש להתייעץ עם מהנדס מבנים מוסמך ולאשר את הפרטים מול פיקוד העורף הרשמי.</p>
+</footer>
+
+</body>
+</html>
