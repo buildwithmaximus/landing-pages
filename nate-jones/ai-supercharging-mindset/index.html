@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The People Getting Promoted All Have This One Thing in Common — Nate B Jones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0F0F0F;
+      --bg-2: #1A1A1A;
+      --bg-3: #242424;
+      --border: #2E2E2E;
+      --text: #F5F5F5;
+      --text-muted: #9A9A9A;
+      --text-dim: #666;
+      --red: #FF4444;
+      --red-dim: rgba(255,68,68,0.1);
+      --green: #22C55E;
+      --yellow: #F59E0B;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo { font-size: 15px; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 150ms; }
+    .nav-link:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px 48px;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .tag--red { background: var(--red-dim); color: var(--red); }
+    .tag--grey { background: var(--bg-3); color: var(--text-muted); }
+    .hero-date { font-size: 13px; color: var(--text-dim); }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .hero-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 13px;
+      transition: border-color 150ms, color 150ms;
+    }
+    .hero-source:hover { border-color: var(--red); color: var(--red); }
+    .hero-source svg { color: var(--red); }
+
+    /* TLDR BOX */
+    .tldr {
+      max-width: 760px;
+      margin: 0 auto 0;
+      padding: 0 24px 48px;
+    }
+    .tldr-box {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-right: 3px solid var(--red);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+    }
+    .tldr-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .tldr-box p {
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.65;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .section { margin-bottom: 48px; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    p { color: var(--text-muted); margin-bottom: 16px; line-height: 1.75; }
+    p:last-child { margin-bottom: 0; }
+
+    /* TAKEAWAYS */
+    .takeaways { display: flex; flex-direction: column; gap: 16px; }
+    .takeaway {
+      display: flex;
+      gap: 16px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+    }
+    .takeaway-num {
+      width: 28px; height: 28px;
+      background: var(--red-dim);
+      color: var(--red);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .takeaway h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+    .takeaway p { font-size: 14px; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+    /* QUOTES */
+    .quote {
+      border-right: 3px solid var(--red);
+      padding: 16px 20px;
+      margin: 24px 0;
+      background: var(--bg-2);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .quote p { font-style: italic; font-size: 1rem; color: var(--text); margin: 0; }
+
+    /* ACTION ITEMS */
+    .actions { display: flex; flex-direction: column; gap: 12px; }
+    .action {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+    .action-icon { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+    .action p { font-size: 14px; color: var(--text-muted); margin: 0; line-height: 1.6; }
+    .action strong { color: var(--text); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../" class="nav-logo">← Nate B Jones Summaries</a>
+  <a href="https://www.youtube.com/watch?v=D-Ww1wLIp60" target="_blank" class="nav-link">Watch on YouTube ↗</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-meta">
+    <span class="tag tag--red">Career</span>
+    <span class="tag tag--grey">AI Strategy</span>
+    <span class="hero-date">January 2026 · ~30 min video · 4 min read</span>
+  </div>
+  <h1>The People Getting Promoted All Have This One Thing in Common</h1>
+  <p class="hero-sub">AI is supercharging one specific mindset — and it's determining who advances and who gets left behind in the new white-collar economy.</p>
+  <a href="https://www.youtube.com/watch?v=D-Ww1wLIp60" target="_blank" class="hero-source">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.14 8.14 0 004.77 1.52V6.75a4.85 4.85 0 01-1-.06z"/></svg>
+    Watch original — Nate B Jones
+  </a>
+</div>
+
+<!-- TL;DR -->
+<div class="tldr">
+  <div class="tldr-box">
+    <div class="tldr-label">TL;DR</div>
+    <p>The traditional career ladder is collapsing because AI now does the entry-level work that used to teach people the ropes. The only people advancing are those with an "extreme high agency" mindset — people who don't wait for opportunities, they create them. AI supercharges this mindset by expanding what one person can execute alone.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- THE PROBLEM -->
+  <div class="section">
+    <div class="section-label">The Core Problem</div>
+    <h2>The Career Ladder Is Being Dismantled</h2>
+    <p>The post-WWII white-collar career model was built on a simple idea: you start at the bottom, do the grunt work, learn the craft, and gradually move up. Entry-level jobs weren't just employment — they were an apprenticeship system disguised as a job.</p>
+    <p>AI has broken this. The entry-level tasks that used to teach people how the business works — research, drafting, data analysis, basic coding — are being absorbed by AI tools. The learning ladder is disappearing.</p>
+    <div class="quote">
+      <p>"The rungs that used to exist on the career ladder are being removed. And the people who don't adapt aren't just falling behind — they're falling off."</p>
+    </div>
+  </div>
+
+  <!-- THE MINDSET -->
+  <div class="section">
+    <div class="section-label">The Key Insight</div>
+    <h2>High Agency — The One Differentiator</h2>
+    <p>In this environment, the people advancing all share one trait: extreme high agency. Not skill. Not connections. Not luck. Agency — the belief that the world is malleable and will respond to your actions.</p>
+    <p>High agency is defined by an obsession with pushing value into the world. High agency people don't ask "what opportunities are available?" — they ask "what can I build, create, or contribute right now?"</p>
+    <p>And here's where AI comes in: AI expands the locus of control for high-agency individuals. Things that used to require a team of 10 can now be executed by one person with the right tools and mindset.</p>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="section">
+    <div class="section-label">Key Takeaways</div>
+    <div class="takeaways">
+      <div class="takeaway">
+        <div class="takeaway-num">1</div>
+        <div>
+          <h3>Stop waiting, start creating</h3>
+          <p>High-agency people don't wait for permission or opportunity. They identify what's needed and execute. Passive "doing your time" is a losing strategy in the AI era.</p>
+        </div>
+      </div>
+      <div class="takeaway">
+        <div class="takeaway-num">2</div>
+        <div>
+          <h3>Use AI to expand your locus of control</h3>
+          <p>AI isn't a threat to high-agency people — it's a multiplier. It lets you systematically overcome obstacles that would have stopped a solo contributor before.</p>
+        </div>
+      </div>
+      <div class="takeaway">
+        <div class="takeaway-num">3</div>
+        <div>
+          <h3>Contribution over extraction</h3>
+          <p>High-agency people focus on what they can create, not what they can gain. The question shifts from "what's in it for me?" to "what can I push into the world?"</p>
+        </div>
+      </div>
+      <div class="takeaway">
+        <div class="takeaway-num">4</div>
+        <div>
+          <h3>Adopt the "challenge" mindset</h3>
+          <p>When things go wrong, don't blame yourself or give up. Reframe setbacks as unsolved problems: "I haven't found the right angle of attack yet — but I can figure it out." Anxiety becomes focus.</p>
+        </div>
+      </div>
+      <div class="takeaway">
+        <div class="takeaway-num">5</div>
+        <div>
+          <h3>Build, ship, learn — repeat</h3>
+          <p>The future belongs to people who treat their career like a product: constantly iterating, releasing, getting feedback, and improving. Disruption is the opportunity, not the threat.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTION ITEMS -->
+  <div class="section">
+    <div class="section-label">What To Do With This</div>
+    <div class="actions">
+      <div class="action">
+        <div class="action-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p><strong>Audit your current work:</strong> Which tasks are you doing that AI could do? Automate those — then use the freed time to build something that creates visible value.</p>
+      </div>
+      <div class="action">
+        <div class="action-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p><strong>Identify one thing you can ship this week:</strong> A document, a process, a tool, a presentation. Something that pushes value outward — not inward.</p>
+      </div>
+      <div class="action">
+        <div class="action-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p><strong>Practice the reframe:</strong> Next time something blocks you, say: "I haven't found the right angle yet." Then actually look for it instead of accepting the block.</p>
+      </div>
+      <div class="action">
+        <div class="action-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p><strong>Use AI as a force multiplier:</strong> Pick one goal that felt too big for one person. Use Claude Code, Copilot, or ChatGPT to execute it alone. Prove to yourself what's now possible.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Summary generated by <a href="../../">Maximus</a> · Original video by <a href="https://www.youtube.com/@NateBJones" target="_blank">@NateBJones</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nate B Jones — Video Summaries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0F0F0F;
+      --bg-2: #1A1A1A;
+      --bg-3: #242424;
+      --border: #2E2E2E;
+      --text: #F5F5F5;
+      --text-muted: #9A9A9A;
+      --text-dim: #666;
+      --red: #FF4444;
+      --red-dim: rgba(255,68,68,0.1);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo { font-size: 15px; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-sub { font-size: 13px; color: var(--text-muted); }
+    .nav-link { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 150ms; }
+    .nav-link:hover { color: var(--text); }
+
+    /* VIDEO CARDS INDEX */
+    .index-section { padding: 60px 24px; max-width: 900px; margin: 0 auto; }
+    .index-section h1 { font-size: 2rem; font-weight: 800; margin-bottom: 8px; }
+    .index-section p { color: var(--text-muted); margin-bottom: 40px; }
+    .video-grid { display: flex; flex-direction: column; gap: 16px; }
+    .video-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 150ms, transform 150ms;
+    }
+    .video-card:hover { border-color: #444; transform: translateY(-1px); }
+    .video-card__thumb {
+      width: 120px;
+      height: 68px;
+      background: var(--bg-3);
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-card__play {
+      width: 28px; height: 28px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .video-card__play svg { margin-left: 2px; }
+    .video-card__date { font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+    .video-card__title { font-size: 15px; font-weight: 600; line-height: 1.4; margin-bottom: 6px; }
+    .video-card__desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .video-card__tag {
+      display: inline-block;
+      padding: 2px 10px;
+      background: var(--red-dim);
+      color: var(--red);
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    footer a { color: var(--text-muted); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div>
+      <a href="#" class="nav-logo">Nate B Jones</a>
+      <span class="nav-sub"> — Video Summaries</span>
+    </div>
+    <a href="../" class="nav-link">← All Pages</a>
+  </nav>
+
+  <div class="index-section">
+    <h1>Video Summaries</h1>
+    <p>Every Nate B Jones video, distilled into a clear 3-minute read. No fluff, no rewatching.</p>
+    <div class="video-grid">
+
+      <a href="./ai-supercharging-mindset/" class="video-card">
+        <div class="video-card__thumb">
+          <div class="video-card__play">
+            <svg width="10" height="12" viewBox="0 0 10 12" fill="white"><path d="M0 0L10 6L0 12V0Z"/></svg>
+          </div>
+        </div>
+        <div>
+          <div class="video-card__date">January 2026</div>
+          <div class="video-card__title">The People Getting Promoted All Have This One Thing in Common (AI Is Supercharging this Mindset)</div>
+          <div class="video-card__desc">Why the traditional career ladder is collapsing — and the one mindset shift that determines who advances in the AI era.</div>
+          <span class="video-card__tag">Career · AI Strategy</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>Summaries by <a href="../">Maximus</a> · Source: <a href="https://www.youtube.com/@NateBJones" target="_blank">@NateBJones</a></p>
+  </footer>
+</body>
+</html>
