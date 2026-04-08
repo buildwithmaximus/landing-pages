@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natan's Second Brain — Interaction Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #1E293B;
+      --secondary: #334155;
+      --cta: #2563EB;
+      --bg: #F8FAFC;
+      --text: #1E293B;
+      --muted: #64748B;
+      --border: #E2E8F0;
+      --card: #FFFFFF;
+      --accent: #7C3AED;
+      --green: #059669;
+      --radius: 10px;
+      --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; font-size: 16px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(30,41,59,0.97); backdrop-filter: blur(12px);
+      height: 64px; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-brand-icon { width: 32px; height: 32px; background: linear-gradient(135deg, #7C3AED, #2563EB); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .nav-brand-text { font-size: 0.95rem; font-weight: 600; color: #F8FAFC; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; color: #94A3B8; text-decoration: none; transition: color var(--transition); }
+    .nav-links a:hover { color: #F8FAFC; }
+    .nav-badge { background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4); color: #A78BFA; font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, #1E293B 0%, #312E81 60%, #1E293B 100%);
+      padding: 130px 2.5rem 90px;
+    }
+    .hero-inner { max-width: 1000px; margin: 0 auto; }
+    .hero-eyebrow { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #A78BFA; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 8px; }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 700; color: #F8FAFC; line-height: 1.15; margin-bottom: 1.25rem; }
+    .hero h1 span { color: #A78BFA; }
+    .hero-sub { font-size: clamp(1rem, 1.5vw, 1.175rem); color: #94A3B8; max-width: 640px; margin-bottom: 2.5rem; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 2.5rem; }
+    .hero-tag { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #CBD5E1; font-size: 0.8rem; padding: 6px 14px; border-radius: 20px; display: flex; align-items: center; gap: 6px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); overflow: hidden; }
+    .kpi-item { background: rgba(255,255,255,0.04); padding: 24px 28px; }
+    .kpi-value { font-size: 1.75rem; font-weight: 700; color: #F8FAFC; }
+    .kpi-label { font-size: 0.78rem; color: #94A3B8; margin-top: 4px; }
+
+    /* SECTIONS */
+    .section { max-width: 1000px; margin: 0 auto; padding: 80px 2.5rem; }
+    .section-divider { border: none; border-top: 1px solid var(--border); }
+    .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cta); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; color: var(--text); margin-bottom: 0.75rem; }
+    .section-desc { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 2.5rem; }
+
+    /* AUDIENCE CARDS */
+    .audience-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 20px; }
+    .audience-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: transform var(--transition), box-shadow var(--transition); }
+    .audience-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+    .audience-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .audience-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .audience-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+    .audience-card .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+    .tag-sm { font-size: 0.72rem; background: var(--bg); border: 1px solid var(--border); color: var(--muted); padding: 3px 8px; border-radius: 4px; }
+
+    /* COMMAND TABLE */
+    .cmd-table { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; width: 100%; }
+    .cmd-table table { width: 100%; border-collapse: collapse; }
+    .cmd-table thead tr { background: var(--primary); }
+    .cmd-table thead th { padding: 14px 20px; text-align: left; font-size: 0.78rem; color: #94A3B8; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+    .cmd-table tbody tr { border-bottom: 1px solid var(--border); transition: background var(--transition); }
+    .cmd-table tbody tr:last-child { border-bottom: none; }
+    .cmd-table tbody tr:hover { background: #F1F5F9; }
+    .cmd-table td { padding: 14px 20px; font-size: 0.875rem; vertical-align: top; }
+    .cmd-trigger { font-family: 'Courier New', monospace; background: #F1F5F9; border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; font-size: 0.82rem; color: #7C3AED; white-space: nowrap; }
+    .cmd-result { color: var(--muted); font-size: 0.82rem; }
+    .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
+    .badge-human { background: #DBEAFE; color: #1D4ED8; }
+    .badge-agent { background: #F3E8FF; color: #7E22CE; }
+    .badge-both { background: #DCFCE7; color: #166534; }
+
+    /* VAULT MAP */
+    .vault-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 16px; }
+    .vault-folder { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .vault-folder-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
+    .vault-folder-name { font-size: 0.875rem; font-weight: 600; font-family: 'Courier New', monospace; }
+    .vault-folder-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    .vault-folder-count { font-size: 0.72rem; color: var(--muted); margin-top: 0.5rem; }
+
+    /* WORKFLOW */
+    .flow-steps { display: flex; flex-direction: column; gap: 0; }
+    .flow-step { display: flex; gap: 1.5rem; padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .flow-step:last-child { border-bottom: none; }
+    .flow-num { width: 36px; height: 36px; min-width: 36px; border-radius: 50%; background: var(--primary); color: #F8FAFC; font-size: 0.875rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .flow-content h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .flow-content p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+    .flow-content .flow-example { margin-top: 0.5rem; background: #F8FAFC; border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; font-size: 0.82rem; color: #7C3AED; font-family: 'Courier New', monospace; }
+
+    /* AGENT SECTION */
+    .agent-box { background: linear-gradient(135deg, #1E1B4B, #312E81); border: 1px solid rgba(124,58,237,0.3); border-radius: var(--radius); padding: 32px; margin-bottom: 20px; }
+    .agent-box h3 { color: #E0E7FF; font-size: 1rem; font-weight: 600; margin-bottom: 1rem; }
+    .agent-code { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 16px 20px; font-family: 'Courier New', monospace; font-size: 0.82rem; color: #A5B4FC; line-height: 1.7; overflow-x: auto; }
+    .agent-code .comment { color: #6B7280; }
+    .agent-code .key { color: #F9A8D4; }
+    .agent-code .value { color: #86EFAC; }
+
+    /* RULES */
+    .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .rule-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+    .rule-card.do { border-left: 3px solid var(--green); }
+    .rule-card.dont { border-left: 3px solid #EF4444; }
+    .rule-card h4 { font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+    .rule-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .rule-card li { font-size: 0.82rem; color: var(--muted); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+    .rule-card li::before { content: ''; width: 6px; height: 6px; min-width: 6px; border-radius: 50%; margin-top: 7px; }
+    .rule-card.do li::before { background: var(--green); }
+    .rule-card.dont li::before { background: #EF4444; }
+
+    /* FOOTER */
+    footer { background: var(--primary); padding: 48px 2.5rem; text-align: center; }
+    .footer-inner { max-width: 1000px; margin: 0 auto; }
+    .footer-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1rem; }
+    .footer-text { font-size: 0.82rem; color: #64748B; }
+    .footer-back { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; color: #94A3B8; text-decoration: none; margin-top: 16px; transition: color var(--transition); }
+    .footer-back:hover { color: #F8FAFC; }
+
+    /* SCROLL ANIMATION */
+    @media (prefers-reduced-motion: no-preference) {
+      .observe { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+      .observe.visible { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 1.25rem 60px; }
+      .section { padding: 60px 1.25rem; }
+      .audience-grid, .vault-grid { grid-template-columns: 1fr; }
+      .rules-grid { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+    </div>
+    <span class="nav-brand-text">Natan's Second Brain</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#audiences">Audiences</a></li>
+    <li><a href="#commands">Commands</a></li>
+    <li><a href="#vault">Vault Map</a></li>
+    <li><a href="#agents">For Agents</a></li>
+  </ul>
+  <span class="nav-badge">v1.0 · Apr 2026</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      Interaction Guide · Live since 2026-04-08
+    </div>
+    <h1>How to interact with<br /><span>Natan's Second Brain</span></h1>
+    <p class="hero-sub">A personal knowledge base built for humans and AI agents. Every note is structured, linked, and maintained by Clawdius Maximus — Natan's AI assistant.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+        Obsidian Vault
+      </span>
+      <span class="hero-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+        GitHub Synced
+      </span>
+      <span class="hero-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Agent-Ready
+      </span>
+      <span class="hero-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Live & Growing
+      </span>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-item">
+        <div class="kpi-value">40+</div>
+        <div class="kpi-label">Vault notes</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-value">16</div>
+        <div class="kpi-label">Daily logs</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-value">4</div>
+        <div class="kpi-label">Active projects</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-value">$1.33</div>
+        <div class="kpi-label">Built by Opus</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCES -->
+<section class="section observe" id="audiences">
+  <p class="section-label">Who is this for</p>
+  <h2 class="section-title">Two audiences, one vault</h2>
+  <p class="section-desc">The second brain is designed to serve both Natan as a human navigating his life and work — and AI agents that need structured context to act on his behalf.</p>
+  <div class="audience-grid">
+    <div class="audience-card">
+      <div class="audience-icon" style="background:#DBEAFE;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <h3>Natan (Human)</h3>
+      <p>Navigate via Obsidian graph view. Search across all notes. Use daily notes as a journal. Track projects, goals, and personal context.</p>
+      <div class="tag-row">
+        <span class="tag-sm">Obsidian app</span>
+        <span class="tag-sm">Graph view</span>
+        <span class="tag-sm">Search</span>
+        <span class="tag-sm">Templates</span>
+      </div>
+    </div>
+    <div class="audience-card">
+      <div class="audience-icon" style="background:#F3E8FF;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <h3>Clawdius Maximus (Agent)</h3>
+      <p>Read/write access via GitHub API. Processes inbox, logs sessions, updates projects, runs health checks. Primary vault maintainer.</p>
+      <div class="tag-row">
+        <span class="tag-sm">GitHub API</span>
+        <span class="tag-sm">Read + Write</span>
+        <span class="tag-sm">Telegram input</span>
+      </div>
+    </div>
+    <div class="audience-card">
+      <div class="audience-icon" style="background:#DCFCE7;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3>Future AI Agents</h3>
+      <p>Load AGENT_CONTEXT.md first. Read the vault map. Follow frontmatter conventions and tag taxonomy. Never invent entities that don't exist.</p>
+      <div class="tag-row">
+        <span class="tag-sm">AGENT_CONTEXT.md</span>
+        <span class="tag-sm">Read-first</span>
+        <span class="tag-sm">Structured data</span>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="section-divider" />
+
+<!-- COMMANDS -->
+<section class="section observe" id="commands">
+  <p class="section-label">How to interact</p>
+  <h2 class="section-title">Commands & triggers</h2>
+  <p class="section-desc">Send these phrases to Maximus via Telegram. The vault updates automatically — Natan just pulls in Obsidian to see the result.</p>
+  <div class="cmd-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Trigger phrase</th>
+          <th>What happens</th>
+          <th>Output location</th>
+          <th>For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="cmd-trigger">"add this to my vault"</span></td>
+          <td><span class="cmd-result">URL fetched or text parsed → structured note created</span></td>
+          <td>Inbox/raw/ → filed</td>
+          <td><span class="badge badge-both">Both</span></td>
+        </tr>
+        <tr>
+          <td><span class="cmd-trigger">"process inbox"</span></td>
+          <td><span class="cmd-result">All raw files compiled into vault notes, moved to processed/</span></td>
+          <td>Relevant folder</td>
+          <td><span class="badge badge-agent">Agent</span></td>
+        </tr>
+        <tr>
+          <td><span class="cmd-trigger">"update project X"</span></td>
+          <td><span class="cmd-result">Projects/X.md found and updated with new info</span></td>
+          <td>Projects/</td>
+          <td><span class="badge badge-both">Both</span></td>
+        </tr>
+        <tr>
+          <td><span class="cmd-trigger">"log today's reflection"</span></td>
+          <td><span class="cmd-result">Daily/YYYY-MM-DD.md created or updated with session log</span></td>
+          <td>Daily/</td>
+          <td><span class="badge badge-human">Human</span></td>
+        </tr>
+        <tr>
+          <td><span class="cmd-trigger">"run health check"</span></td>
+          <td><span class="cmd-result">Vault linted: broken links, missing frontmatter, orphaned notes</span></td>
+          <td>Inbox/health-check.md</td>
+          <td><span class="badge badge-agent">Agent</span></td>
+        </tr>
+        <tr>
+          <td><span class="cmd-trigger">"save this research"</span></td>
+          <td><span class="cmd-result">Content structured as research note with frontmatter + wikilinks</span></td>
+          <td>Notes/ or Resources/</td>
+          <td><span class="badge badge-both">Both</span></td>
+        </tr>
+        <tr>
+          <td><span class="cmd-trigger">Paste a URL</span></td>
+          <td><span class="cmd-result">Page fetched, key ideas extracted, note created</span></td>
+          <td>Resources/ or Notes/</td>
+          <td><span class="badge badge-both">Both</span></td>
+        </tr>
+        <tr>
+          <td><span class="cmd-trigger">Paste a GitHub repo</span></td>
+          <td><span class="cmd-result">README + key files read, summary note created</span></td>
+          <td>Resources/</td>
+          <td><span class="badge badge-both">Both</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<hr class="section-divider" />
+
+<!-- WORKFLOW -->
+<section class="section observe" id="workflow">
+  <p class="section-label">How it works</p>
+  <h2 class="section-title">The inbox workflow</h2>
+  <p class="section-desc">Everything flows through the inbox. You send, Maximus processes, the vault grows. You never edit files directly.</p>
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-content">
+        <h4>Send raw material via Telegram</h4>
+        <p>Drop a URL, paste text, send an image, share an idea. Any format works. The message is your trigger.</p>
+        <div class="flow-example">"Add this to my vault: https://example.com/article"</div>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-content">
+        <h4>Maximus files it to Inbox/raw/</h4>
+        <p>Raw content is captured as-is into Inbox/raw/. Nothing is lost. The original source is preserved as the audit trail.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-content">
+        <h4>Content is compiled into a vault note</h4>
+        <p>Maximus reads the raw file, identifies the right folder, writes a structured note with frontmatter, tags, and wikilinks. No invented entities — only real ones from the vault.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">4</div>
+      <div class="flow-content">
+        <h4>Raw file moves to Inbox/processed/</h4>
+        <p>The source file is archived — never deleted. It becomes the audit trail showing where vault content came from.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">5</div>
+      <div class="flow-content">
+        <h4>Natan pulls in Obsidian</h4>
+        <p>Cmd+P → Obsidian Git: Pull. The new note appears in the vault, connected to the graph.</p>
+        <div class="flow-example">Cmd+P → "Obsidian Git: Pull"</div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="section-divider" />
+
+<!-- VAULT MAP -->
+<section class="section observe" id="vault">
+  <p class="section-label">Structure</p>
+  <h2 class="section-title">Vault map</h2>
+  <p class="section-desc">Every folder has a purpose. Agents should read AGENT_CONTEXT.md first — it links to the most important files.</p>
+  <div class="vault-grid">
+    <div class="vault-folder">
+      <div class="vault-folder-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        <span class="vault-folder-name">AGENT_CONTEXT.md</span>
+      </div>
+      <p class="vault-folder-desc">Master briefing. Any agent loads this first. Contains who Natan is, active context, vault map, and all conventions.</p>
+    </div>
+    <div class="vault-folder">
+      <div class="vault-folder-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <span class="vault-folder-name">Atlas/</span>
+      </div>
+      <p class="vault-folder-desc">9 Maps of Content — index notes linking everything together. Start here to navigate any topic.</p>
+      <p class="vault-folder-count">9 MOC files</p>
+    </div>
+    <div class="vault-folder">
+      <div class="vault-folder-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <span class="vault-folder-name">Daily/</span>
+      </div>
+      <p class="vault-folder-desc">Session logs. One file per day. Every conversation with Maximus is logged here — the living history of Natan's work.</p>
+      <p class="vault-folder-count">16 daily notes (and growing)</p>
+    </div>
+    <div class="vault-folder">
+      <div class="vault-folder-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <span class="vault-folder-name">Projects/</span>
+      </div>
+      <p class="vault-folder-desc">Active and completed projects. HubSpot Migration, GoShine GEO, Deloitte.com, Maximus assistant.</p>
+      <p class="vault-folder-count">4 projects</p>
+    </div>
+    <div class="vault-folder">
+      <div class="vault-folder-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <span class="vault-folder-name">People/</span>
+      </div>
+      <p class="vault-folder-desc">One note per person. Natan, Sarah, colleagues, partner orgs. Linked to projects and events.</p>
+      <p class="vault-folder-count">6 people + orgs</p>
+    </div>
+    <div class="vault-folder">
+      <div class="vault-folder-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <span class="vault-folder-name">Maximus/</span>
+      </div>
+      <p class="vault-folder-desc">AI assistant context. Identity files, soul, mission, skills, and 16 memory logs from the OpenClaw era.</p>
+      <p class="vault-folder-count">Identity + Skills + Memory</p>
+    </div>
+    <div class="vault-folder">
+      <div class="vault-folder-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <span class="vault-folder-name">Inbox/</span>
+      </div>
+      <p class="vault-folder-desc">raw/ for unprocessed inputs. processed/ as audit trail. The entry point for all new content.</p>
+      <p class="vault-folder-count">raw/ + processed/</p>
+    </div>
+    <div class="vault-folder">
+      <div class="vault-folder-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <span class="vault-folder-name">Resources/</span>
+      </div>
+      <p class="vault-folder-desc">Books, podcasts, articles, GitHub repos, tools. Everything Natan reads, watches, or references.</p>
+      <p class="vault-folder-count">15+ resources</p>
+    </div>
+  </div>
+</section>
+<hr class="section-divider" />
+
+<!-- AGENT SECTION -->
+<section class="section observe" id="agents">
+  <p class="section-label">For AI agents</p>
+  <h2 class="section-title">Agent quickstart</h2>
+  <p class="section-desc">If you are an AI agent loading this vault, follow these steps. Do not skip step 1.</p>
+
+  <div class="agent-box">
+    <h3>Step 1 — Read AGENT_CONTEXT.md (mandatory)</h3>
+    <div class="agent-code">
+<span class="comment"># GitHub API — read the master briefing</span>
+GET https://api.github.com/repos/Natan-Yago/obsidian-second-brain/contents/AGENT_CONTEXT.md
+<span class="key">Authorization:</span> <span class="value">Bearer [your-token]</span>
+<span class="comment"># Decode base64 content field → read top to bottom</span>
+    </div>
+  </div>
+
+  <div class="agent-box">
+    <h3>Step 2 — Check today's daily note</h3>
+    <div class="agent-code">
+GET https://api.github.com/repos/Natan-Yago/obsidian-second-brain/contents/Daily/<span class="value">YYYY-MM-DD</span>.md
+<span class="comment"># Shows what happened today, what's in progress, what Natan is focused on</span>
+    </div>
+  </div>
+
+  <div class="agent-box">
+    <h3>Step 3 — Write to the vault (follow the rules)</h3>
+    <div class="agent-code">
+PUT https://api.github.com/repos/Natan-Yago/obsidian-second-brain/contents/<span class="value">PATH</span>
+<span class="key">Body:</span> {
+  <span class="key">"message":</span> <span class="value">"commit message"</span>,
+  <span class="key">"content":</span> <span class="value">"[base64 encoded markdown]"</span>,
+  <span class="key">"sha":</span> <span class="value">"[sha of existing file if updating]"</span>
+}
+<span class="comment"># Always include frontmatter. Always use [[wikilinks]]. Never invent entities.</span>
+    </div>
+  </div>
+</section>
+<hr class="section-divider" />
+
+<!-- RULES -->
+<section class="section observe" id="rules">
+  <p class="section-label">Conventions</p>
+  <h2 class="section-title">Rules every agent must follow</h2>
+  <p class="section-desc">These rules ensure the vault stays consistent and trustworthy over time.</p>
+  <div class="rules-grid">
+    <div class="rule-card do">
+      <h4>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Always do
+      </h4>
+      <ul>
+        <li>Read AGENT_CONTEXT.md before any action</li>
+        <li>Include full frontmatter on every note you create</li>
+        <li>Use [[wikilinks]] on first mention of any entity</li>
+        <li>File content to the right folder (see vault map)</li>
+        <li>Preserve Inbox/processed/ as audit trail</li>
+        <li>Use only the 22 approved tags from §4 taxonomy</li>
+        <li>Ask Natan via Telegram if anything is ambiguous</li>
+      </ul>
+    </div>
+    <div class="rule-card dont">
+      <h4>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Never do
+      </h4>
+      <ul>
+        <li>Edit Maximus/Identity/ without telling Natan</li>
+        <li>Publish Personal/, Daily/, or AGENT_CONTEXT.md</li>
+        <li>Invent people, projects, or resources that don't exist</li>
+        <li>Add tags outside the approved taxonomy</li>
+        <li>Delete files from Inbox/processed/</li>
+        <li>Use filler, sycophancy, or placeholder content</li>
+        <li>Assume — ask if unclear</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="nav-brand-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+      </div>
+      <span style="color:#94A3B8; font-size:0.9rem; font-weight:500;">Natan's Second Brain</span>
+    </div>
+    <p class="footer-text">Built by Clawdius Maximus 🦁 · April 2026 · Natan Yagodaev</p>
+    <a href="/landing-pages/" class="footer-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Library
+    </a>
+  </div>
+</footer>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.observe').forEach(el => observer.observe(el));
+  }
+
+  // Card hover depth effect
+  document.querySelectorAll('.audience-card, .vault-folder').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-3px)';
+      card.style.boxShadow = '0 12px 32px rgba(0,0,0,0.08)';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.boxShadow = '';
+    });
+  });
+</script>
+</body>
+</html>
