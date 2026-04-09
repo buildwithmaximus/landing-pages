@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HubSpot Campaign Architecture — High-Tech System View</title>
+  <title>מבנה קמפיינים ב-HubSpot — מבט מערכת</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -83,13 +83,13 @@
 <body>
 <nav>
   <div class="nav-inner">
-    <div class="brand"><span class="brand-mark"></span>HubSpot Campaign Architecture</div>
+    <div class="brand"><span class="brand-mark"></span>מבנה קמפיינים ב-HubSpot</div>
     <ul class="nav-links">
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#campaigns">Campaigns</a></li>
-      <li><a href="#email-layer">Email Layer</a></li>
-      <li><a href="#scoring">Scoring</a></li>
-      <li><a href="#matrix">Matrix</a></li>
+      <li><a href="#overview">סקירה</a></li>
+      <li><a href="#campaigns">קמפיינים</a></li>
+      <li><a href="#email-layer">שכבת מיילים</a></li>
+      <li><a href="#scoring">ניקוד</a></li>
+      <li><a href="#matrix">מטריצה</a></li>
     </ul>
   </div>
 </nav>
@@ -97,9 +97,9 @@
 <header class="hero">
   <div class="container hero-grid">
     <div>
-      <div class="eyebrow">High-Tech System View · Marketo → HubSpot</div>
-      <h1>מבנה הקמפיינים<br>ל-Go-Live ב-HubSpot</h1>
-      <p class="subtitle">גרסה חדשה, טכנולוגית ומסודרת יותר של ארכיטקטורת הקמפיינים: לא עוד מסמך ארוך, אלא שכבת בקרה אחת שמראה מה חייב להיבנות, איך הנכסים מתחברים, ואיך כל רכיב משרת את ההטמעה בפועל.</p>
+      <div class="eyebrow">Marketo → HubSpot · עמוד ארכיטקטורת קמפיינים</div>
+      <h1>מבנה הקמפיינים ב-HubSpot</h1>
+      <p class="subtitle">עמוד זה מרכז את כל מבנה הקמפיינים עבור ה-Go-Live ב-HubSpot: סוגי הקמפיינים, דפי הנחיתה, הטפסים, תבניות המייל, האוטומציות, הדוחות, מודל הניקוד ומטריצת היכולות. המטרה היא לייצר תמונה אחת ברורה שמיישרת קו בין שיווק, CRM, אוטומציה והטמעה.</p>
       <div class="kpis">
         <div class="kpi"><div class="value">4</div><div class="label">סוגי קמפיינים</div></div>
         <div class="kpi"><div class="value">13</div><div class="label">תבניות מייל</div></div>
@@ -109,12 +109,12 @@
       </div>
     </div>
     <div class="hero-card">
-      <h3>System Snapshot</h3>
+      <h3>תמונת מצב</h3>
       <div class="status-grid">
-        <div class="status"><div class="label">Scope</div><div class="value">Landing Pages · Forms · Emails · Automation · Reporting</div></div>
-        <div class="status"><div class="label">Use Cases</div><div class="value">Event · Webinar · Newsletter · Digital Asset</div></div>
-        <div class="status"><div class="label">Future Layer</div><div class="value">Lead Scoring אחרי Go-Live</div></div>
-        <div class="status"><div class="label">Editing Model</div><div class="value">Drag & Drop first · coded only when needed</div></div>
+        <div class="status"><div class="label">היקף</div><div class="value">דפי נחיתה · טפסים · מיילים · אוטומציה · דוחות</div></div>
+        <div class="status"><div class="label">סוגי שימוש</div><div class="value">אירוע · וובינר · ניוזלטר · נכס דיגיטלי</div></div>
+        <div class="status"><div class="label">שכבה עתידית</div><div class="value">Lead ניקוד לאחר ה-Go-Live</div></div>
+        <div class="status"><div class="label">מודל עריכה</div><div class="value">Drag & Drop כברירת מחדל · קוד רק כשצריך</div></div>
       </div>
     </div>
   </div>
@@ -124,18 +124,18 @@
   <div class="container">
     <div class="section-head"><div><h2>איך לקרוא את המערכת</h2><p>העמוד בנוי כמו product architecture board: קודם רואים את סוגי הקמפיינים, אחר כך את שכבת המיילים המשותפת, אחר כך את מודל הניקוד העתידי, ולבסוף מטריצת היכולות והסיכום הכמותי ל-Go-Live.</p></div></div>
     <div class="bento">
-      <div class="panel span-4"><div class="eyepill blue">Campaign Systems</div><h3>Campaign Packages</h3><p>לכל קמפיין יש חבילת נכסים קבועה: דף, טופס, מיילים, Workflow, רשימות ודוחות.</p></div>
-      <div class="panel span-4"><div class="eyepill amber">Shared Layer</div><h3>Email Infrastructure</h3><p>תבנית בסיס, תאימות Outlook, יכולות עריכה, personalization, A/B testing, preview and reporting.</p></div>
-      <div class="panel span-4"><div class="eyepill red">Roadmap</div><h3>Lead Scoring</h3><p>שכבת בשלות עתידית לאחר שיש מספיק דאטה התנהגותי ב-HubSpot.</p></div>
-      <div class="panel span-8"><div class="eyepill cyan">Management Insight</div><h3>What this page really does</h3><p>זה לא רק “מסמך מפרט”. זה source of alignment בין שיווק, CRM, אוטומציה, תוכן, ו-go-live readiness. המטרה היא לצמצם חיכוך, להאיץ בנייה, ולהפוך את כל שכבת ה-campaign operations לשחזורית וברורה.</p></div>
-      <div class="panel span-4"><div class="eyepill green">Delivery Principle</div><h3>Build once, reuse everywhere</h3><p>תבניות בסיסיות + חוקים ברורים + אוטומציות קצרות = צוות שיווק עצמאי יותר ופחות עומס תפעולי בכל קמפיין חדש.</p></div>
+      <div class="panel span-4"><div class="eyepill blue">מערכות קמפיינים</div><h3>חבילות קמפיין</h3><p>לכל קמפיין יש חבילת נכסים קבועה: דף, טופס, מיילים, Workflow, רשימות ודוחות.</p></div>
+      <div class="panel span-4"><div class="eyepill amber">שכבה משותפת</div><h3>Email Infrastructure</h3><p>תבנית בסיס, תאימות Outlook, יכולות עריכה, personalization, A/B testing, preview and reporting.</p></div>
+      <div class="panel span-4"><div class="eyepill red">מפת דרכים</div><h3>Lead ניקוד</h3><p>שכבת בשלות עתידית לאחר שיש מספיק דאטה התנהגותי ב-HubSpot.</p></div>
+      <div class="panel span-8"><div class="eyepill cyan">תובנת ניהול</div><h3>מה העמוד הזה באמת עושה</h3><p>זה לא רק “מסמך מפרט”. זה source of alignment בין שיווק, CRM, אוטומציה, תוכן, ו-go-live readiness. המטרה היא לצמצם חיכוך, להאיץ בנייה, ולהפוך את כל שכבת ה-campaign operations לשחזורית וברורה.</p></div>
+      <div class="panel span-4"><div class="eyepill green">עקרון הפעלה</div><h3>בונים פעם אחת, משתמשים שוב ושוב</h3><p>תבניות בסיסיות + חוקים ברורים + אוטומציות קצרות = צוות שיווק עצמאי יותר ופחות עומס תפעולי בכל קמפיין חדש.</p></div>
     </div>
   </div>
 </section>
 
 <section id="campaigns">
   <div class="container">
-    <div class="section-head"><div><h2>Campaign Systems</h2><p>ארבעת מסלולי הקמפיינים מוצגים כאן כמערכות נפרדות — עם הדגשה על מבנה, post-submission logic, workflow automation והמשמעות התפעולית של כל סוג.</p></div></div>
+    <div class="section-head"><div><h2>מערכות קמפיינים</h2><p>ארבעת מסלולי הקמפיינים מוצגים כאן כמערכות נפרדות — עם הדגשה על מבנה, post-submission logic, workflow automation והמשמעות התפעולית של כל סוג.</p></div></div>
     <div class="tabs">
       <button class="tab-btn active" data-tab="event">אירוע</button>
       <button class="tab-btn" data-tab="newsletter">ניוזלטר</button>
@@ -146,40 +146,40 @@
     <div class="tab-panel active" id="event">
       <div class="campaign-grid">
         <div class="stack">
-          <div class="panel"><div class="eyepill blue">Event Campaign</div><h3>מבנה הקמפיין</h3><ul><li>LP עם Hero, פרטי אירוע, אג'נדה, דוברים, form area ו-social proof</li><li>טופס הרשמה עם פרטים אישיים, חברה, תפקיד, session preference ו-UTM fields</li><li>4 מיילים: הזמנה, אישור, תזכורת, Follow-up</li></ul></div>
+          <div class="panel"><div class="eyepill blue">קמפיין אירוע</div><h3>מבנה הקמפיין</h3><ul><li>LP עם Hero, פרטי אירוע, אג'נדה, דוברים, form area ו-social proof</li><li>טופס הרשמה עם פרטים אישיים, חברה, תפקיד, session preference ו-UTM fields</li><li>4 מיילים: הזמנה, אישור, תזכורת, Follow-up</li></ul></div>
           <div class="metric-wrap"><table><thead><tr><th>Post-Submission</th><th>הגדרה</th></tr></thead><tbody><tr><td>Thank-you</td><td>הודעת תודה + עמוד אישור</td></tr><tr><td>Internal Notification</td><td>למנהל האירוע</td></tr><tr><td>List</td><td>רשימת נרשמים</td></tr><tr><td>Lifecycle</td><td>Lead אם ריק</td></tr><tr><td>Captcha</td><td>reCAPTCHA</td></tr></tbody></table></div>
         </div>
-        <div class="panel"><div class="eyepill blue">Automation</div><h3>Workflow לאירוע</h3><div class="flow"><div class="flow-item trigger">Trigger: Event registration form</div><div class="flow-item action">List + Lifecycle + Lead Source</div><div class="flow-item email">Confirmation email</div><div class="flow-item delay">Wait until event date - 1 day</div><div class="flow-item email">Reminder email</div><div class="flow-item delay">Wait until event date + 1 day</div><div class="flow-item email">Follow-up email</div></div></div>
+        <div class="panel"><div class="eyepill blue">אוטומציה</div><h3>Workflow לאירוע</h3><div class="flow"><div class="flow-item trigger">טריגר: שליחת טופס הרשמה לאירוע</div><div class="flow-item action">רשימה + Lifecycle + Lead Source</div><div class="flow-item email">מייל אישור</div><div class="flow-item delay">המתנה עד יום לפני האירוע</div><div class="flow-item email">מייל תזכורת</div><div class="flow-item delay">המתנה עד יום אחרי האירוע</div><div class="flow-item email">מייל Follow-up</div></div></div>
       </div>
     </div>
 
     <div class="tab-panel" id="newsletter">
       <div class="campaign-grid">
         <div class="stack">
-          <div class="panel"><div class="eyepill purple">Newsletter</div><h3>מבנה הקמפיין</h3><ul><li>טופס הרשמה מינימלי + preference checkbox</li><li>Subscription Type ייעודי ל-newsletter</li><li>תבנית גיליון תוכן עם אזורי כתבות ו-CTA</li><li>Workflow רק להרשמה, לא לשליחה עצמה</li></ul></div>
+          <div class="panel"><div class="eyepill purple">ניוזלטר</div><h3>מבנה הקמפיין</h3><ul><li>טופס הרשמה מינימלי + preference checkbox</li><li>Subscription Type ייעודי ל-newsletter</li><li>תבנית גיליון תוכן עם אזורי כתבות ו-CTA</li><li>Workflow רק להרשמה, לא לשליחה עצמה</li></ul></div>
           <div class="callout warning">ההפרדה בין workflow הרשמה לבין שליחת newsletter בפועל היא החלטה נכונה: היא שומרת שליטה בידי השיווק.</div>
         </div>
-        <div class="panel"><div class="eyepill purple">Automation</div><h3>Workflow לניוזלטר</h3><div class="flow"><div class="flow-item trigger">Trigger: Newsletter signup</div><div class="flow-item action">Subscription Type → Newsletter</div><div class="flow-item action">Lifecycle → Subscriber</div><div class="flow-item action">Lead Source → Email Marketing</div><div class="flow-item email">Optional welcome email</div></div></div>
+        <div class="panel"><div class="eyepill purple">אוטומציה</div><h3>Workflow לניוזלטר</h3><div class="flow"><div class="flow-item trigger">Trigger: ניוזלטר signup</div><div class="flow-item action">Subscription Type → ניוזלטר</div><div class="flow-item action">Lifecycle → Subscriber</div><div class="flow-item action">Lead Source → Email Marketing</div><div class="flow-item email">מייל Welcome אופציונלי</div></div></div>
       </div>
     </div>
 
     <div class="tab-panel" id="digital">
       <div class="campaign-grid">
         <div class="stack">
-          <div class="panel"><div class="eyepill green">Digital Asset</div><h3>מבנה הקמפיין</h3><ul><li>LP gated עם value proposition, preview, social proof ו-form area</li><li>טופס הורדה עם Asset Name + UTM hidden fields</li><li>2 מיילים: promotion + delivery</li><li>גישה מיידית דרך Thank-you + שימור דרך email</li></ul></div>
+          <div class="panel"><div class="eyepill green">נכס דיגיטלי</div><h3>מבנה הקמפיין</h3><ul><li>LP gated עם value proposition, preview, social proof ו-form area</li><li>טופס הורדה עם Asset Name + UTM hidden fields</li><li>2 מיילים: promotion + delivery</li><li>גישה מיידית דרך Thank-you + שימור דרך email</li></ul></div>
           <div class="callout success">זה אחד ה-patterns הכי חזקים כאן: instant gratification בעמוד + durable delivery במייל.</div>
         </div>
-        <div class="panel"><div class="eyepill green">Automation</div><h3>Workflow לנכס דיגיטלי</h3><div class="flow"><div class="flow-item trigger">Trigger: Asset download form</div><div class="flow-item email">Delivery email with asset link</div><div class="flow-item action">List: asset downloaders</div><div class="flow-item action">Lifecycle → Lead</div><div class="flow-item action">Lead Source → Content Download</div></div></div>
+        <div class="panel"><div class="eyepill green">אוטומציה</div><h3>Workflow לנכס דיגיטלי</h3><div class="flow"><div class="flow-item trigger">טריגר: שליחת טופס הורדה</div><div class="flow-item email">מייל מסירה עם קישור לנכס</div><div class="flow-item action">רשימת מורידים</div><div class="flow-item action">Lifecycle → Lead</div><div class="flow-item action">Lead Source → Content Download</div></div></div>
       </div>
     </div>
 
     <div class="tab-panel" id="webinar">
       <div class="campaign-grid">
         <div class="stack">
-          <div class="panel"><div class="eyepill cyan">Webinar</div><h3>מבנה הקמפיין</h3><ul><li>LP עם פרטי וובינר, דוברים, agenda, social proof ו-platform requirements</li><li>טופס מורחב עם phone + question for speaker</li><li>5 מיילים: invitation, confirmation, day-before, 1-hour, recording follow-up</li><li>שכבת attendance future-ready</li></ul></div>
+          <div class="panel"><div class="eyepill cyan">וובינר</div><h3>מבנה הקמפיין</h3><ul><li>LP עם פרטי וובינר, דוברים, agenda, social proof ו-platform requirements</li><li>טופס מורחב עם phone + question for speaker</li><li>5 מיילים: invitation, confirmation, day-before, 1-hour, recording follow-up</li><li>שכבת attendance future-ready</li></ul></div>
           <div class="callout">הוובינר הוא המערכת המורכבת ביותר כאן, כי הוא משלב registration, reminders, live access ו-post-event engagement.</div>
         </div>
-        <div class="panel"><div class="eyepill cyan">Automation</div><h3>Workflow לוובינר</h3><div class="flow"><div class="flow-item trigger">Trigger: Webinar signup</div><div class="flow-item action">List + Lifecycle + Lead Source</div><div class="flow-item email">Confirmation + Join Link</div><div class="flow-item delay">Wait to day before</div><div class="flow-item email">Reminder #1</div><div class="flow-item delay">Wait to one hour before</div><div class="flow-item email">Reminder #2</div><div class="flow-item delay">Wait to one day after</div><div class="flow-item email">Recording + follow-up</div></div></div>
+        <div class="panel"><div class="eyepill cyan">אוטומציה</div><h3>Workflow לוובינר</h3><div class="flow"><div class="flow-item trigger">Trigger: וובינר signup</div><div class="flow-item action">רשימה + Lifecycle + Lead Source</div><div class="flow-item email">אישור + קישור כניסה</div><div class="flow-item delay">המתנה עד יום לפני</div><div class="flow-item email">תזכורת ראשונה</div><div class="flow-item delay">המתנה עד שעה לפני</div><div class="flow-item email">תזכורת שנייה</div><div class="flow-item delay">המתנה עד יום אחרי</div><div class="flow-item email">הקלטה + Follow-up</div></div></div>
       </div>
     </div>
   </div>
@@ -187,37 +187,37 @@
 
 <section id="email-layer">
   <div class="container">
-    <div class="section-head"><div><h2>Shared Email Layer</h2><p>זאת התשתית המשותפת לכל הקמפיינים: אותה שפת עיצוב, אותם כללי תאימות, אותן יכולות עריכה, ואותה שכבת ניטור.</p></div></div>
+    <div class="section-head"><div><h2>Shared שכבת מיילים</h2><p>זאת התשתית המשותפת לכל הקמפיינים: אותה שפת עיצוב, אותם כללי תאימות, אותן יכולות עריכה, ואותה שכבת ניטור.</p></div></div>
     <div class="bento">
-      <div class="panel span-4"><div class="eyepill amber">Base Template</div><h3>תבנית בסיסית</h3><ul><li>Header ממותג + pre-header</li><li>Hero image, H1, body, CTA, secondary content</li><li>Footer קבוע עם unsubscribe, preferences, address, privacy</li></ul></div>
+      <div class="panel span-4"><div class="eyepill amber">תבנית בסיס</div><h3>תבנית בסיסית</h3><ul><li>Header ממותג + pre-header</li><li>Hero image, H1, body, CTA, secondary content</li><li>Footer קבוע עם unsubscribe, preferences, address, privacy</li></ul></div>
       <div class="panel span-4"><div class="eyepill amber">Outlook</div><h3>תאימות Outlook</h3><ul><li>Desktop Windows = table-based layouts</li><li>Inline CSS only</li><li>Conditional comments when needed</li><li>Testing חובה לפני שליחה</li></ul></div>
-      <div class="panel span-4"><div class="eyepill amber">Editing</div><h3>ניהול תבניות</h3><ul><li>Drag & Drop לעבודה שוטפת</li><li>Smart Content ב-Enterprise</li><li>A/B testing לנושאים, תוכן, שעת שליחה</li><li>Coded Templates רק כשבאמת צריך</li></ul></div>
-      <div class="panel span-12"><div class="eyepill amber">Email Reporting</div><div class="metric-wrap"><table><thead><tr><th>Metric</th><th>Meaning</th><th>View</th></tr></thead><tbody><tr><td>Delivery Rate</td><td>אחוז מיילים שנמסרו</td><td>לכל שליחה</td></tr><tr><td>Open Rate</td><td>פתיחות ו-unique opens</td><td>לכל שליחה</td></tr><tr><td>CTR / CTOR</td><td>ביצועי הקלקה</td><td>לכל שליחה</td></tr><tr><td>Bounce / Unsubscribe / Spam</td><td>Signals of friction or quality issues</td><td>לכל שליחה</td></tr><tr><td>Heat Map / Devices</td><td>איך בפועל צרכו את המייל</td><td>לכל שליחה</td></tr></tbody></table></div></div>
+      <div class="panel span-4"><div class="eyepill amber">עריכה</div><h3>ניהול תבניות</h3><ul><li>Drag & Drop לעבודה שוטפת</li><li>Smart Content ב-Enterprise</li><li>A/B testing לנושאים, תוכן, שעת שליחה</li><li>Coded Templates רק כשבאמת צריך</li></ul></div>
+      <div class="panel span-12"><div class="eyepill amber">דוחות מייל</div><div class="metric-wrap"><table><thead><tr><th>Metric</th><th>Meaning</th><th>View</th></tr></thead><tbody><tr><td>Delivery Rate</td><td>אחוז מיילים שנמסרו</td><td>לכל שליחה</td></tr><tr><td>Open Rate</td><td>פתיחות ו-unique opens</td><td>לכל שליחה</td></tr><tr><td>CTR / CTOR</td><td>ביצועי הקלקה</td><td>לכל שליחה</td></tr><tr><td>Bounce / Unsubscribe / Spam</td><td>Signals of friction or quality issues</td><td>לכל שליחה</td></tr><tr><td>Heat Map / Devices</td><td>איך בפועל צרכו את המייל</td><td>לכל שליחה</td></tr></tbody></table></div></div>
     </div>
   </div>
 </section>
 
 <section id="scoring">
   <div class="container">
-    <div class="section-head"><div><h2>Lead Scoring Roadmap</h2><p>שכבת maturity עתידית שמטרתה להפוך התנהגות, התאמה עסקית וניקוד שלילי לשפה אחידה בין שיווק, BD ומכירות.</p></div></div>
+    <div class="section-head"><div><h2>Lead ניקוד מפת דרכים</h2><p>שכבת maturity עתידית שמטרתה להפוך התנהגות, התאמה עסקית וניקוד שלילי לשפה אחידה בין שיווק, BD ומכירות.</p></div></div>
     <div class="grid grid-3">
-      <div class="panel"><div class="eyepill red">Behavioral</div><h3>Interest Score</h3><ul><li>Open = +1</li><li>Click = +3</li><li>Event Registration = +15</li><li>Asset Download = +10</li><li>Newsletter Signup = +5</li></ul></div>
-      <div class="panel"><div class="eyepill red">Fit</div><h3>Demographic / Firmographic</h3><ul><li>C-Level / VP = +20</li><li>Enterprise = +20</li><li>Target Industry = +15</li><li>Israel = +15</li></ul></div>
-      <div class="panel"><div class="eyepill red">Negative</div><h3>Disqualification</h3><ul><li>Competitor domain = -30</li><li>Personal email = -10</li><li>Unsubscribe = -20</li><li>Hard bounce = -50</li></ul></div>
+      <div class="panel"><div class="eyepill red">Behavioral</div><h3>ניקוד עניין</h3><ul><li>Open = +1</li><li>Click = +3</li><li>Event Registration = +15</li><li>Asset Download = +10</li><li>ניוזלטר Signup = +5</li></ul></div>
+      <div class="panel"><div class="eyepill red">Fit</div><h3>ניקוד דמוגרפי / עסקי</h3><ul><li>C-Level / VP = +20</li><li>Enterprise = +20</li><li>Target Industry = +15</li><li>Israel = +15</li></ul></div>
+      <div class="panel"><div class="eyepill red">Negative</div><h3>ניקוד שלילי</h3><ul><li>Competitor domain = -30</li><li>Personal email = -10</li><li>Unsubscribe = -20</li><li>Hard bounce = -50</li></ul></div>
     </div>
-    <div class="metric-wrap" style="margin-top:18px"><table><thead><tr><th>Score Range</th><th>Segment</th><th>Recommended Action</th></tr></thead><tbody><tr><td>0–20</td><td>Cold Lead</td><td>Nurture כללי</td></tr><tr><td>21–50</td><td>Warm Lead</td><td>Nurture ממוקד</td></tr><tr><td>51–75</td><td>MQL</td><td>Alert to marketing / BD review</td></tr><tr><td>76+</td><td>SQL</td><td>Direct handoff to sales / BD</td></tr></tbody></table></div>
+    <div class="metric-wrap" style="margin-top:18px"><table><thead><tr><th>טווח ניקוד</th><th>סגמנט</th><th>פעולה מומלצת</th></tr></thead><tbody><tr><td>0–20</td><td>ליד קר</td><td>Nurture כללי</td></tr><tr><td>21–50</td><td>ליד חם</td><td>Nurture ממוקד</td></tr><tr><td>51–75</td><td>MQL</td><td>Alert to marketing / BD review</td></tr><tr><td>76+</td><td>SQL</td><td>Direct handoff to sales / BD</td></tr></tbody></table></div>
   </div>
 </section>
 
 <section id="matrix">
   <div class="container">
-    <div class="section-head"><div><h2>Capability Matrix + Go-Live Summary</h2><p>התרגום של כל מה שמעל ללוח בקרה אחד: מה כל נכס מסוגל לעשות, ומה צריך להיות מוכן מספרית כדי לעלות לאוויר.</p></div></div>
+    <div class="section-head"><div><h2>Capability מטריצה + Go-Live Summary</h2><p>התרגום של כל מה שמעל ללוח בקרה אחד: מה כל נכס מסוגל לעשות, ומה צריך להיות מוכן מספרית כדי לעלות לאוויר.</p></div></div>
     <div class="metric-wrap"><table class="matrix"><thead><tr><th>נכס</th><th>עיצוב</th><th>עריכה</th><th>שימוש</th><th>ניטור</th><th>דוחות</th></tr></thead><tbody><tr><td>דפי נחיתה</td><td>Drag & Drop / coded</td><td>צוות שיווק</td><td>LP לכל קמפיין</td><td>Views, submissions, CVR</td><td>השוואה ומגמות</td></tr><tr><td>מיילים</td><td>Drag & Drop / HTML</td><td>תוכן, נושא, CTA</td><td>Manual / scheduled / workflow</td><td>Open, CTR, bounces</td><td>Per send reporting</td></tr><tr><td>טפסים</td><td>Visual builder</td><td>Fields, order, validation</td><td>LP / embed / popup</td><td>Submissions, CVR</td><td>Form performance</td></tr></tbody></table></div>
-    <div class="metric-wrap" style="margin-top:18px"><table><thead><tr><th>Category</th><th>Count</th><th>Details</th></tr></thead><tbody><tr><td>Campaign Types</td><td>4</td><td>Event · Webinar · Newsletter · Digital Asset</td></tr><tr><td>Landing Pages</td><td>4</td><td>One per campaign type</td></tr><tr><td>Forms</td><td>4</td><td>One per campaign type</td></tr><tr><td>Email Templates</td><td>13</td><td>4 + 5 + 2 + 2</td></tr><tr><td>Workflows</td><td>4</td><td>One per campaign type</td></tr><tr><td>Dashboards</td><td>5</td><td>Four campaign dashboards + one summary</td></tr></tbody></table></div>
+    <div class="metric-wrap" style="margin-top:18px"><table><thead><tr><th>קטגוריה</th><th>כמות</th><th>פירוט</th></tr></thead><tbody><tr><td>סוגי קמפיינים</td><td>4</td><td>אירוע · וובינר · ניוזלטר · נכס דיגיטלי</td></tr><tr><td>דפי נחיתה</td><td>4</td><td>One per campaign type</td></tr><tr><td>טפסים</td><td>4</td><td>One per campaign type</td></tr><tr><td>תבניות מייל</td><td>13</td><td>4 + 5 + 2 + 2</td></tr><tr><td>Workflows</td><td>4</td><td>One per campaign type</td></tr><tr><td>Dashboards</td><td>5</td><td>Four campaign dashboards + one summary</td></tr></tbody></table></div>
   </div>
 </section>
 
-<footer class="footer">HubSpot Campaign Architecture · High-Tech RTL Redesign · BuildWithMaximus</footer>
+<footer class="footer">מבנה קמפיינים ב-HubSpot · High-Tech RTL Redesign · BuildWithMaximus</footer>
 
 <script>
   const buttons=[...document.querySelectorAll('.tab-btn')];
