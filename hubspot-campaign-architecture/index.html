@@ -7,7 +7,7 @@
     <title>מבנה קמפיינים — Landing Pages, Emails & Forms Stretcher</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;500;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #ffffff;
@@ -45,8 +45,6 @@
         }
 
         .container {
-            max-width: var(--container-width);
-
             max-width: 1100px;
             margin: 0 auto;
             padding: 48px 24px;
@@ -79,9 +77,6 @@
         }
 
         .tab-btn {
-            background: rgba(255,255,255,0.03);
-            color: var(--text-muted);
-
             padding: 10px 18px;
             font-size: 14px;
             font-weight: 500;
@@ -101,9 +96,6 @@
         }
 
         .tab-btn.active {
-            color: var(--text-main);
-            box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset;
-
             color: var(--text-main);
             border-bottom-color: var(--text-main);
         }
@@ -127,9 +119,6 @@
 
         /* ── Cards ── */
         .card {
-            background: rgba(11,16,32,0.92);
-            backdrop-filter: blur(10px);
-
             border: 1px solid var(--border-color);
             border-radius: 10px;
             padding: 28px;
@@ -173,8 +162,6 @@
 
         /* ── Wireframes ── */
         .wireframe {
-            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-
             background: var(--wireframe-bg);
             border: 1px dashed #cbd5e1;
             border-radius: 8px;
@@ -197,8 +184,6 @@
         }
 
         .wf-block {
-            background: rgba(255,255,255,0.03);
-
             background: var(--wireframe-block);
             border-radius: 6px;
             padding: 14px 16px;
@@ -505,8 +490,6 @@
         }
 
         .collapsible-trigger {
-            background: rgba(255,255,255,0.03);
-
             display: flex;
             align-items: center;
             gap: 8px;
@@ -607,8 +590,6 @@
         }
 
         .data-table th {
-            background: rgba(255,255,255,0.04);
-
             background: var(--hover-bg);
             padding: 10px 14px;
             text-align: right;
@@ -782,8 +763,6 @@
 
         /* ── Notes / Callout ── */
         .callout {
-            background: rgba(255,255,255,0.04);
-
             background: #eff6ff;
             border-right: 4px solid #3b82f6;
             border-radius: 0 6px 6px 0;
@@ -881,8 +860,6 @@
         /* ── Responsive ── */
         @media (max-width: 768px) {
             .container {
-            max-width: var(--container-width);
-
                 padding: 24px 16px;
             }
 
@@ -891,9 +868,6 @@
             }
 
             .tab-btn {
-            background: rgba(255,255,255,0.03);
-            color: var(--text-muted);
-
                 padding: 8px 12px;
                 font-size: 12px;
             }
@@ -908,9 +882,6 @@
             }
 
             .card {
-            background: rgba(11,16,32,0.92);
-            backdrop-filter: blur(10px);
-
                 padding: 20px;
             }
         }
@@ -921,7 +892,7 @@
 
     <div class="container">
         <header>
-            <h1> מבנה קמפיינים — Stretcher Layout</h1>
+            <h1>📐 מבנה קמפיינים — Stretcher Layout</h1>
             <p class="subtitle">
                 הגדרת מבנה דפי נחיתה, מיילים וטפסים עבור שלושת סוגי הקמפיינים ב-Go Live · HubSpot Marketing Hub
             </p>
@@ -967,7 +938,7 @@
             <!-- ─── 1A: Event Landing Page ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#dbeafe;color:#2563eb;"></div>
+                    <div class="card-icon" style="background:#dbeafe;color:#2563eb;">📄</div>
                     <div>
                         <div class="card-title">דף נחיתה — אירוע</div>
                         <div class="card-subtitle">Event Registration Landing Page</div>
@@ -984,37 +955,37 @@
                             <span class="wireframe-label">Landing Page Wireframe</span>
 
                             <div class="wf-block hero">
-                                 אזור Hero<br>
+                                🎯 אזור Hero<br>
                                 <small>כותרת אירוע · תאריך · מיקום/קישור · תמונת רקע או באנר</small>
                             </div>
 
                             <div class="wf-block">
-                                 פרטי האירוע<br>
+                                📋 פרטי האירוע<br>
                                 <small>תיאור קצר · יעדי האירוע · קהל יעד</small>
                             </div>
 
                             <div class="wf-block">
-                                ️ אג׳נדה / לוח זמנים<br>
+                                🗓️ אג׳נדה / לוח זמנים<br>
                                 <small>שעות · נושאים · הפסקות</small>
                             </div>
 
                             <div class="wf-block">
-                                 מרצים / דוברים<br>
+                                🎤 מרצים / דוברים<br>
                                 <small>תמונה · שם · תפקיד · ארגון</small>
                             </div>
 
                             <div class="wf-block form-area">
-                                 אזור טופס הרשמה<br>
+                                📝 אזור טופס הרשמה<br>
                                 <small>טופס HubSpot מוטמע — ראה מבנה טופס להלן</small>
                             </div>
 
                             <div class="wf-block">
-                                 Social Proof<br>
+                                💬 Social Proof<br>
                                 <small>ציטוטים ממשתתפים קודמים · לוגואים של חברות · מספרי משתתפים</small>
                             </div>
 
                             <div class="wf-block footer-block">
-                                 Footer<br>
+                                🔗 Footer<br>
                                 <small>לוגו · קישורי רשתות חברתיות · מידע משפטי · קישור לאתר הראשי</small>
                             </div>
                         </div>
@@ -1030,7 +1001,7 @@
             <!-- ─── 1B: Event Registration Form ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#dbeafe;color:#2563eb;"></div>
+                    <div class="card-icon" style="background:#dbeafe;color:#2563eb;">📋</div>
                     <div>
                         <div class="card-title">טופס הרשמה — אירוע</div>
                         <div class="card-subtitle">Event Registration Form</div>
@@ -1045,7 +1016,7 @@
                     <div class="collapsible-content open">
                         <div class="form-spec">
                             <div class="form-spec-header">
-                                <div class="fs-icon"></div>
+                                <div class="fs-icon">📋</div>
                                 <div>
                                     <div class="fs-title">טופס הרשמה לאירוע</div>
                                     <div class="fs-subtitle">Event Registration Form · 6 שדות גלויים + 3 נסתרים</div>
@@ -1057,7 +1028,7 @@
                                 <div class="field-grid">
                                     <div class="field-row-pair">
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">🔤</div>
                                             <div class="f-details">
                                                 <div class="f-name">שם פרטי</div>
                                                 <div class="f-meta">HubSpot: firstname</div>
@@ -1068,7 +1039,7 @@
                                             </div>
                                         </div>
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">🔤</div>
                                             <div class="f-details">
                                                 <div class="f-name">שם משפחה</div>
                                                 <div class="f-meta">HubSpot: lastname</div>
@@ -1080,7 +1051,7 @@
                                         </div>
                                     </div>
                                     <div class="field-row">
-                                        <div class="f-icon email"></div>
+                                        <div class="f-icon email">📧</div>
                                         <div class="f-details">
                                             <div class="f-name">אימייל עסקי</div>
                                             <div class="f-meta">HubSpot: email · אימות פורמט אוטומטי</div>
@@ -1092,7 +1063,7 @@
                                     </div>
                                     <div class="field-row-pair">
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">🏢</div>
                                             <div class="f-details">
                                                 <div class="f-name">חברה / ארגון</div>
                                                 <div class="f-meta">HubSpot: company</div>
@@ -1103,7 +1074,7 @@
                                             </div>
                                         </div>
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">💼</div>
                                             <div class="f-details">
                                                 <div class="f-name">תפקיד</div>
                                                 <div class="f-meta">HubSpot: jobtitle</div>
@@ -1115,7 +1086,7 @@
                                         </div>
                                     </div>
                                     <div class="field-row">
-                                        <div class="f-icon dropdown"></div>
+                                        <div class="f-icon dropdown">📑</div>
                                         <div class="f-details">
                                             <div class="f-name">העדפת סשן / נושא</div>
                                             <div class="f-meta">Custom Property · ערכים יוגדרו לפי אירוע</div>
@@ -1132,9 +1103,9 @@
                                 <div class="form-spec-section-label"><span class="dot"
                                         style="background:#94a3b8;"></span> שדות נסתרים (Hidden Fields)</div>
                                 <div class="hidden-fields-row">
-                                    <div class="hidden-chip"><span class="hc-icon">️‍️</span> UTM Source</div>
-                                    <div class="hidden-chip"><span class="hc-icon">️‍️</span> UTM Campaign</div>
-                                    <div class="hidden-chip"><span class="hc-icon">️‍️</span> UTM Medium</div>
+                                    <div class="hidden-chip"><span class="hc-icon">👁️‍🗨️</span> UTM Source</div>
+                                    <div class="hidden-chip"><span class="hc-icon">👁️‍🗨️</span> UTM Campaign</div>
+                                    <div class="hidden-chip"><span class="hc-icon">👁️‍🗨️</span> UTM Medium</div>
                                 </div>
 
                                 <div class="form-spec-divider"></div>
@@ -1181,7 +1152,7 @@
             <!-- ─── 1C: Event Emails ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#dbeafe;color:#2563eb;">️</div>
+                    <div class="card-icon" style="background:#dbeafe;color:#2563eb;">✉️</div>
                     <div>
                         <div class="card-title">תבניות מייל — אירוע</div>
                         <div class="card-subtitle">Event Email Templates (4 Templates)</div>
@@ -1197,12 +1168,12 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="email-wf">
-                            <div class="ewf-header"> לוגו + כותרת עליונה</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת עליונה</div>
                             <div class="ewf-body">
-                                <div class="ewf-block"> באנר / תמונת אירוע</div>
-                                <div class="ewf-block"> כותרת: הוזמנת ל-[שם האירוע]</div>
-                                <div class="ewf-block"> פרטי האירוע: תאריך · שעה · מיקום</div>
-                                <div class="ewf-block"> תיאור קצר + יתרונות השתתפות</div>
+                                <div class="ewf-block">🎯 באנר / תמונת אירוע</div>
+                                <div class="ewf-block">📌 כותרת: הוזמנת ל-[שם האירוע]</div>
+                                <div class="ewf-block">📋 פרטי האירוע: תאריך · שעה · מיקום</div>
+                                <div class="ewf-block">📝 תיאור קצר + יתרונות השתתפות</div>
                                 <div class="ewf-cta">להרשמה →</div>
                             </div>
                             <div class="ewf-footer">קישור להסרה · מידע משפטי · רשתות חברתיות</div>
@@ -1222,12 +1193,12 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="email-wf">
-                            <div class="ewf-header"> לוגו + כותרת עליונה</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת עליונה</div>
                             <div class="ewf-body">
-                                <div class="ewf-block"> {{contact.firstname}}, ההרשמה אושרה!</div>
-                                <div class="ewf-block"> סיכום: שם האירוע · תאריך · שעה · מיקום</div>
-                                <div class="ewf-block"> קישור להוספה ליומן (ICS / Google Calendar)</div>
-                                <div class="ewf-block"> הכנה מקדימה / מידע שימושי</div>
+                                <div class="ewf-block">✅ {{contact.firstname}}, ההרשמה אושרה!</div>
+                                <div class="ewf-block">📋 סיכום: שם האירוע · תאריך · שעה · מיקום</div>
+                                <div class="ewf-block">🔗 קישור להוספה ליומן (ICS / Google Calendar)</div>
+                                <div class="ewf-block">📌 הכנה מקדימה / מידע שימושי</div>
                                 <div class="ewf-cta">הוספה ליומן →</div>
                             </div>
                             <div class="ewf-footer">קישור להסרה · מידע משפטי · רשתות חברתיות</div>
@@ -1244,11 +1215,11 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="email-wf">
-                            <div class="ewf-header"> לוגו + כותרת עליונה</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת עליונה</div>
                             <div class="ewf-body">
                                 <div class="ewf-block">⏰ תזכורת: האירוע מחר!</div>
-                                <div class="ewf-block"> פרטים מעודכנים: שעה · מיקום / קישור כניסה</div>
-                                <div class="ewf-block"> מה לצפות / מה להכין</div>
+                                <div class="ewf-block">📋 פרטים מעודכנים: שעה · מיקום / קישור כניסה</div>
+                                <div class="ewf-block">📌 מה לצפות / מה להכין</div>
                                 <div class="ewf-cta">לפרטים המלאים →</div>
                             </div>
                             <div class="ewf-footer">קישור להסרה · מידע משפטי</div>
@@ -1265,12 +1236,12 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="email-wf">
-                            <div class="ewf-header"> לוגו + כותרת עליונה</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת עליונה</div>
                             <div class="ewf-body">
-                                <div class="ewf-block"> תודה שהשתתפת ב-[שם האירוע]</div>
-                                <div class="ewf-block"> קישור להקלטה / מצגות / חומרים</div>
-                                <div class="ewf-block"> סיכום נקודות עיקריות</div>
-                                <div class="ewf-block"> צעדים הבאים / תוכן נוסף רלוונטי</div>
+                                <div class="ewf-block">🙏 תודה שהשתתפת ב-[שם האירוע]</div>
+                                <div class="ewf-block">🎥 קישור להקלטה / מצגות / חומרים</div>
+                                <div class="ewf-block">📊 סיכום נקודות עיקריות</div>
+                                <div class="ewf-block">📌 צעדים הבאים / תוכן נוסף רלוונטי</div>
                                 <div class="ewf-cta">לצפייה בהקלטה →</div>
                             </div>
                             <div class="ewf-footer">קישור להסרה · מידע משפטי · רשתות חברתיות</div>
@@ -1290,30 +1261,30 @@
                 </div>
 
                 <div class="flow">
-                    <div class="flow-step trigger"> טריגר: שליחת טופס הרשמה לאירוע</div>
+                    <div class="flow-step trigger">🔵 טריגר: שליחת טופס הרשמה לאירוע</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> הוספה לרשימת נרשמים — [שם האירוע]</div>
+                    <div class="flow-step action">✅ הוספה לרשימת נרשמים — [שם האירוע]</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> עדכון Lifecycle Stage → Lead (אם ריק)</div>
+                    <div class="flow-step action">✅ עדכון Lifecycle Stage → Lead (אם ריק)</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> עדכון Lead Source → Event (אם ריק)</div>
+                    <div class="flow-step action">✅ עדכון Lead Source → Event (אם ריק)</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step email">️ שליחת מייל אישור הרשמה</div>
+                    <div class="flow-step email">✉️ שליחת מייל אישור הרשמה</div>
                     <div class="flow-arrow">▼</div>
                     <div class="flow-step delay">⏳ המתנה עד [תאריך אירוע − 1 יום]</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step email">️ שליחת מייל תזכורת</div>
+                    <div class="flow-step email">✉️ שליחת מייל תזכורת</div>
                     <div class="flow-arrow">▼</div>
                     <div class="flow-step delay">⏳ המתנה עד [תאריך אירוע + 1 יום]</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step email">️ שליחת מייל Follow-up</div>
+                    <div class="flow-step email">✉️ שליחת מייל Follow-up</div>
                 </div>
             </div>
 
             <!-- ─── 1E: Event Monitoring & Reports ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#dbeafe;color:#2563eb;"></div>
+                    <div class="card-icon" style="background:#dbeafe;color:#2563eb;">📊</div>
                     <div>
                         <div class="card-title">ניתור ודוחות — אירוע</div>
                         <div class="card-subtitle">Event Campaign Monitoring & Reports</div>
@@ -1387,7 +1358,7 @@
             <!-- ─── 2A: Newsletter Signup Page ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#f3e8ff;color:#7c3aed;"></div>
+                    <div class="card-icon" style="background:#f3e8ff;color:#7c3aed;">📄</div>
                     <div>
                         <div class="card-title">עמוד/טופס הרשמה לניוזלטר</div>
                         <div class="card-subtitle">Newsletter Signup Page + Form</div>
@@ -1404,25 +1375,25 @@
                             <span class="wireframe-label">Signup Page Wireframe</span>
 
                             <div class="wf-block hero">
-                                 אזור Hero<br>
+                                📬 אזור Hero<br>
                                 <small>כותרת: הישארו מעודכנים · Value Proposition · תיאור קצר של התוכן שהמנוי
                                     יקבל</small>
                             </div>
 
                             <div class="wf-block">
-                                 מה תקבלו?<br>
+                                📌 מה תקבלו?<br>
                                 <small>3-4 נקודות ערך: עדכוני תעשייה · תובנות מומחים · אירועים · תוכן בלעדי</small>
                             </div>
 
                             <div class="wf-block form-area">
-                                 טופס הרשמה מינימלי<br>
+                                📝 טופס הרשמה מינימלי<br>
                                 <small>ראה מפרט שדות להלן</small>
                             </div>
 
                             <div class="form-spec" style="margin-top:16px;">
                                 <div class="form-spec-header"
                                     style="background:linear-gradient(135deg,#6d28d9 0%,#8b5cf6 100%);">
-                                    <div class="fs-icon"></div>
+                                    <div class="fs-icon">📋</div>
                                     <div>
                                         <div class="fs-title">טופס הרשמה לניוזלטר</div>
                                         <div class="fs-subtitle">Newsletter Subscription Form · 3 שדות גלויים + 2 נסתרים
@@ -1434,7 +1405,7 @@
                                             style="background:#8b5cf6;"></span> שדות גלויים (Visible Fields)</div>
                                     <div class="field-grid">
                                         <div class="field-row">
-                                            <div class="f-icon email"></div>
+                                            <div class="f-icon email">📧</div>
                                             <div class="f-details">
                                                 <div class="f-name">אימייל עסקי</div>
                                                 <div class="f-meta">HubSpot: email · אימות פורמט אוטומטי</div>
@@ -1446,7 +1417,7 @@
                                         </div>
                                         <div class="field-row-pair">
                                             <div class="field-row">
-                                                <div class="f-icon text"></div>
+                                                <div class="f-icon text">🔤</div>
                                                 <div class="f-details">
                                                     <div class="f-name">שם פרטי</div>
                                                     <div class="f-meta">HubSpot: firstname</div>
@@ -1457,7 +1428,7 @@
                                                 </div>
                                             </div>
                                             <div class="field-row">
-                                                <div class="f-icon text"></div>
+                                                <div class="f-icon text">🔤</div>
                                                 <div class="f-details">
                                                     <div class="f-name">שם משפחה</div>
                                                     <div class="f-meta">HubSpot: lastname</div>
@@ -1486,8 +1457,8 @@
                                     <div class="form-spec-section-label"><span class="dot"
                                             style="background:#94a3b8;"></span> שדות נסתרים (Hidden Fields)</div>
                                     <div class="hidden-fields-row">
-                                        <div class="hidden-chip"><span class="hc-icon">️‍️</span> UTM Source</div>
-                                        <div class="hidden-chip"><span class="hc-icon">️‍️</span> UTM Campaign</div>
+                                        <div class="hidden-chip"><span class="hc-icon">👁️‍🗨️</span> UTM Source</div>
+                                        <div class="hidden-chip"><span class="hc-icon">👁️‍🗨️</span> UTM Campaign</div>
                                     </div>
 
                                     <div class="form-spec-divider"></div>
@@ -1499,12 +1470,12 @@
                             </div>
 
                             <div class="wf-block">
-                                ️ הבטחת פרטיות<br>
+                                🛡️ הבטחת פרטיות<br>
                                 <small>הנתונים שלך בטוחים · ניתן לבטל בכל עת · קישור למדיניות פרטיות</small>
                             </div>
 
                             <div class="wf-block footer-block">
-                                 Footer<br>
+                                🔗 Footer<br>
                                 <small>לוגו · רשתות חברתיות · מידע משפטי</small>
                             </div>
                         </div>
@@ -1543,7 +1514,7 @@
             <!-- ─── 2B: Newsletter Email Template ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#f3e8ff;color:#7c3aed;">️</div>
+                    <div class="card-icon" style="background:#f3e8ff;color:#7c3aed;">✉️</div>
                     <div>
                         <div class="card-title">תבנית מייל ניוזלטר</div>
                         <div class="card-subtitle">Newsletter Email Template</div>
@@ -1557,29 +1528,29 @@
                     </button>
                     <div class="collapsible-content open">
                         <div class="email-wf" style="max-width:460px;">
-                            <div class="ewf-header"> לוגו + כותרת ניוזלטר + תאריך גיליון</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת ניוזלטר + תאריך גיליון</div>
                             <div class="ewf-body">
-                                <div class="ewf-block"> שלום {{contact.firstname}}, הנה העדכונים האחרונים</div>
+                                <div class="ewf-block">👋 שלום {{contact.firstname}}, הנה העדכונים האחרונים</div>
 
                                 <div style="border:1px solid #e2e8f0;border-radius:6px;padding:12px;margin-bottom:8px;">
-                                    <div class="ewf-block" style="margin-bottom:4px;"> כתבה #1: כותרת + תקציר</div>
-                                    <div class="ewf-block" style="background:#e0f2fe;">️ תמונה</div>
+                                    <div class="ewf-block" style="margin-bottom:4px;">📰 כתבה #1: כותרת + תקציר</div>
+                                    <div class="ewf-block" style="background:#e0f2fe;">🖼️ תמונה</div>
                                     <div class="ewf-cta" style="margin:8px auto;">לקריאה המלאה →</div>
                                 </div>
 
                                 <div style="border:1px solid #e2e8f0;border-radius:6px;padding:12px;margin-bottom:8px;">
-                                    <div class="ewf-block" style="margin-bottom:4px;"> כתבה #2: כותרת + תקציר</div>
-                                    <div class="ewf-block" style="background:#e0f2fe;">️ תמונה</div>
+                                    <div class="ewf-block" style="margin-bottom:4px;">📰 כתבה #2: כותרת + תקציר</div>
+                                    <div class="ewf-block" style="background:#e0f2fe;">🖼️ תמונה</div>
                                     <div class="ewf-cta" style="margin:8px auto;">לקריאה המלאה →</div>
                                 </div>
 
                                 <div style="border:1px solid #e2e8f0;border-radius:6px;padding:12px;margin-bottom:8px;">
-                                    <div class="ewf-block" style="margin-bottom:4px;"> כתבה #3: כותרת + תקציר</div>
-                                    <div class="ewf-block" style="background:#e0f2fe;">️ תמונה</div>
+                                    <div class="ewf-block" style="margin-bottom:4px;">📰 כתבה #3: כותרת + תקציר</div>
+                                    <div class="ewf-block" style="background:#e0f2fe;">🖼️ תמונה</div>
                                     <div class="ewf-cta" style="margin:8px auto;">לקריאה המלאה →</div>
                                 </div>
 
-                                <div class="ewf-block"> אירוע קרוב / הודעה חשובה (אופציונלי)</div>
+                                <div class="ewf-block">📌 אירוע קרוב / הודעה חשובה (אופציונלי)</div>
                             </div>
                             <div class="ewf-footer">
                                 ניהול העדפות · קישור להסרה · מדיניות פרטיות<br>
@@ -1606,15 +1577,15 @@
                 </div>
 
                 <div class="flow">
-                    <div class="flow-step trigger"> טריגר: שליחת טופס הרשמה לניוזלטר</div>
+                    <div class="flow-step trigger">🔵 טריגר: שליחת טופס הרשמה לניוזלטר</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> הגדרת Subscription Type → Newsletter</div>
+                    <div class="flow-step action">✅ הגדרת Subscription Type → Newsletter</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> עדכון Lifecycle Stage → Subscriber (אם ריק)</div>
+                    <div class="flow-step action">✅ עדכון Lifecycle Stage → Subscriber (אם ריק)</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> עדכון Lead Source → Email Marketing (אם ריק)</div>
+                    <div class="flow-step action">✅ עדכון Lead Source → Email Marketing (אם ריק)</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step email">️ שליחת מייל Welcome (אופציונלי)</div>
+                    <div class="flow-step email">✉️ שליחת מייל Welcome (אופציונלי)</div>
                 </div>
 
                 <div class="callout warning">
@@ -1626,7 +1597,7 @@
             <!-- ─── 2D: Newsletter Reports ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#f3e8ff;color:#7c3aed;"></div>
+                    <div class="card-icon" style="background:#f3e8ff;color:#7c3aed;">📊</div>
                     <div>
                         <div class="card-title">ניתור ודוחות — ניוזלטר</div>
                         <div class="card-subtitle">Newsletter Monitoring & Reports</div>
@@ -1695,7 +1666,7 @@
             <!-- ─── 3A: Digital Asset Landing Page ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#dcfce7;color:#059669;"></div>
+                    <div class="card-icon" style="background:#dcfce7;color:#059669;">📄</div>
                     <div>
                         <div class="card-title">דף נחיתה — נכס דיגיטלי</div>
                         <div class="card-subtitle">Gated Content Landing Page</div>
@@ -1712,36 +1683,36 @@
                             <span class="wireframe-label">Landing Page Wireframe</span>
 
                             <div class="wf-block hero">
-                                 אזור Hero<br>
+                                📥 אזור Hero<br>
                                 <small>כותרת הנכס · תיאור ערך ב-1-2 משפטים · תמונת מתאר / עטיפת המסמך</small>
                             </div>
 
                             <div class="wf-row">
                                 <div style="flex:1.2;">
                                     <div class="wf-block">
-                                         תיאור הנכס<br>
+                                        📖 תיאור הנכס<br>
                                         <small>מה תלמדו · נקודות עיקריות (Bullets) · קהל יעד · היקף
                                             (עמודים/דקות)</small>
                                     </div>
                                     <div class="wf-block">
-                                        ️ הצצה לתוכן<br>
+                                        👁️ הצצה לתוכן<br>
                                         <small>תמונת Preview / תוכן עניינים / ציטוט מרכזי</small>
                                     </div>
                                     <div class="wf-block">
-                                         Social Proof<br>
+                                        💬 Social Proof<br>
                                         <small>מספר הורדות · ציטוטים · לוגואים</small>
                                     </div>
                                 </div>
                                 <div style="flex:0.8;">
                                     <div class="wf-block form-area" style="min-height:200px;">
-                                         טופס הורדה<br>
+                                        📝 טופס הורדה<br>
                                         <small>Gated Form — ראה מבנה טופס להלן</small>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="wf-block footer-block">
-                                 Footer<br>
+                                🔗 Footer<br>
                                 <small>לוגו · קישורי רשתות חברתיות · מידע משפטי · תוכן נוסף מומלץ</small>
                             </div>
                         </div>
@@ -1752,7 +1723,7 @@
             <!-- ─── 3B: Digital Asset Form ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#dcfce7;color:#059669;"></div>
+                    <div class="card-icon" style="background:#dcfce7;color:#059669;">📋</div>
                     <div>
                         <div class="card-title">טופס הורדה — נכס דיגיטלי</div>
                         <div class="card-subtitle">Content Download Form</div>
@@ -1768,7 +1739,7 @@
                         <div class="form-spec">
                             <div class="form-spec-header"
                                 style="background:linear-gradient(135deg,#047857 0%,#10b981 100%);">
-                                <div class="fs-icon"></div>
+                                <div class="fs-icon">📋</div>
                                 <div>
                                     <div class="fs-title">טופס הורדת [שם הנכס]</div>
                                     <div class="fs-subtitle">Content Download Form · 4 שדות גלויים + 3 נסתרים</div>
@@ -1780,7 +1751,7 @@
                                 <div class="field-grid">
                                     <div class="field-row-pair">
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">🔤</div>
                                             <div class="f-details">
                                                 <div class="f-name">שם פרטי</div>
                                                 <div class="f-meta">HubSpot: firstname</div>
@@ -1791,7 +1762,7 @@
                                             </div>
                                         </div>
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">🔤</div>
                                             <div class="f-details">
                                                 <div class="f-name">שם משפחה</div>
                                                 <div class="f-meta">HubSpot: lastname</div>
@@ -1803,7 +1774,7 @@
                                         </div>
                                     </div>
                                     <div class="field-row">
-                                        <div class="f-icon email"></div>
+                                        <div class="f-icon email">📧</div>
                                         <div class="f-details">
                                             <div class="f-name">אימייל עסקי</div>
                                             <div class="f-meta">HubSpot: email · אימות פורמט אוטומטי</div>
@@ -1815,7 +1786,7 @@
                                     </div>
                                     <div class="field-row-pair">
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">🏢</div>
                                             <div class="f-details">
                                                 <div class="f-name">חברה / ארגון</div>
                                                 <div class="f-meta">HubSpot: company</div>
@@ -1826,7 +1797,7 @@
                                             </div>
                                         </div>
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">💼</div>
                                             <div class="f-details">
                                                 <div class="f-name">תפקיד</div>
                                                 <div class="f-meta">HubSpot: jobtitle</div>
@@ -1844,9 +1815,9 @@
                                 <div class="form-spec-section-label"><span class="dot"
                                         style="background:#94a3b8;"></span> שדות נסתרים (Hidden Fields)</div>
                                 <div class="hidden-fields-row">
-                                    <div class="hidden-chip"><span class="hc-icon">️‍️</span> UTM Source</div>
-                                    <div class="hidden-chip"><span class="hc-icon">️‍️</span> UTM Campaign</div>
-                                    <div class="hidden-chip"><span class="hc-icon">️‍️</span> Asset Name</div>
+                                    <div class="hidden-chip"><span class="hc-icon">👁️‍🗨️</span> UTM Source</div>
+                                    <div class="hidden-chip"><span class="hc-icon">👁️‍🗨️</span> UTM Campaign</div>
+                                    <div class="hidden-chip"><span class="hc-icon">👁️‍🗨️</span> Asset Name</div>
                                 </div>
 
                                 <div class="form-spec-divider"></div>
@@ -1891,7 +1862,7 @@
             <!-- ─── 3C: Digital Asset Emails ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#dcfce7;color:#059669;">️</div>
+                    <div class="card-icon" style="background:#dcfce7;color:#059669;">✉️</div>
                     <div>
                         <div class="card-title">תבניות מייל — נכס דיגיטלי</div>
                         <div class="card-subtitle">Digital Asset Email Templates (2 Templates)</div>
@@ -1907,12 +1878,12 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="email-wf">
-                            <div class="ewf-header"> לוגו + כותרת עליונה</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת עליונה</div>
                             <div class="ewf-body">
-                                <div class="ewf-block"> תמונת עטיפה / Preview של הנכס</div>
-                                <div class="ewf-block"> כותרת: [שם הנכס] — זמין להורדה</div>
-                                <div class="ewf-block"> תיאור: 2-3 משפטים על הערך + Bullets</div>
-                                <div class="ewf-block"> מי כתב / מומחיות</div>
+                                <div class="ewf-block">📥 תמונת עטיפה / Preview של הנכס</div>
+                                <div class="ewf-block">📌 כותרת: [שם הנכס] — זמין להורדה</div>
+                                <div class="ewf-block">📋 תיאור: 2-3 משפטים על הערך + Bullets</div>
+                                <div class="ewf-block">👤 מי כתב / מומחיות</div>
                                 <div class="ewf-cta">להורדה חינם →</div>
                             </div>
                             <div class="ewf-footer">קישור להסרה · מידע משפטי · רשתות חברתיות</div>
@@ -1929,12 +1900,12 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="email-wf">
-                            <div class="ewf-header"> לוגו + כותרת עליונה</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת עליונה</div>
                             <div class="ewf-body">
-                                <div class="ewf-block"> {{contact.firstname}}, הנכס מוכן!</div>
+                                <div class="ewf-block">✅ {{contact.firstname}}, הנכס מוכן!</div>
                                 <div class="ewf-cta">להורדת [שם הנכס] →</div>
-                                <div class="ewf-block"> תוכן נוסף שיעניין אותך (המלצות)</div>
-                                <div class="ewf-block"> רוצה לשמוע עוד? צור קשר</div>
+                                <div class="ewf-block">📌 תוכן נוסף שיעניין אותך (המלצות)</div>
+                                <div class="ewf-block">📞 רוצה לשמוע עוד? צור קשר</div>
                             </div>
                             <div class="ewf-footer">קישור להסרה · מידע משפטי · רשתות חברתיות</div>
                         </div>
@@ -1953,15 +1924,15 @@
                 </div>
 
                 <div class="flow">
-                    <div class="flow-step trigger"> טריגר: שליחת טופס הורדת נכס</div>
+                    <div class="flow-step trigger">🔵 טריגר: שליחת טופס הורדת נכס</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step email">️ שליחת מייל עם קישור הורדה</div>
+                    <div class="flow-step email">✉️ שליחת מייל עם קישור הורדה</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> הוספה לרשימת מורידים — [שם הנכס]</div>
+                    <div class="flow-step action">✅ הוספה לרשימת מורידים — [שם הנכס]</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> עדכון Lifecycle Stage → Lead (אם ריק)</div>
+                    <div class="flow-step action">✅ עדכון Lifecycle Stage → Lead (אם ריק)</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> עדכון Lead Source → Content Download (אם ריק)</div>
+                    <div class="flow-step action">✅ עדכון Lead Source → Content Download (אם ריק)</div>
                 </div>
 
                 <div class="callout success">
@@ -1973,7 +1944,7 @@
             <!-- ─── 3E: Digital Asset Reports ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#dcfce7;color:#059669;"></div>
+                    <div class="card-icon" style="background:#dcfce7;color:#059669;">📊</div>
                     <div>
                         <div class="card-title">ניתור ודוחות — נכס דיגיטלי</div>
                         <div class="card-subtitle">Digital Asset Monitoring & Reports</div>
@@ -2037,7 +2008,7 @@
             <!-- ─── 4A: Webinar Landing Page ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#cffafe;color:#0891b2;"></div>
+                    <div class="card-icon" style="background:#cffafe;color:#0891b2;">📄</div>
                     <div>
                         <div class="card-title">דף נחיתה — וובינר</div>
                         <div class="card-subtitle">Webinar Registration Landing Page</div>
@@ -2054,42 +2025,42 @@
                             <span class="wireframe-label">Landing Page Wireframe</span>
 
                             <div class="wf-block hero">
-                                 אזור Hero<br>
+                                🎥 אזור Hero<br>
                                 <small>כותרת הוובינר · תאריך ושעה · משך · תמונת רקע / באנר</small>
                             </div>
 
                             <div class="wf-block">
-                                 תיאור הוובינר<br>
+                                📋 תיאור הוובינר<br>
                                 <small>על מה נדבר · מה תלמדו · למי מיועד</small>
                             </div>
 
                             <div class="wf-block">
-                                 מרצים / מנחים<br>
+                                🎤 מרצים / מנחים<br>
                                 <small>תמונה · שם · תפקיד · ארגון · ביוגרפיה קצרה</small>
                             </div>
 
                             <div class="wf-block">
-                                ️ אג׳נדה / נושאים<br>
+                                🗓️ אג׳נדה / נושאים<br>
                                 <small>נושאים מרכזיים · לוח זמנים · Q&A Session</small>
                             </div>
 
                             <div class="wf-block form-area">
-                                 אזור טופס הרשמה לוובינר<br>
+                                📝 אזור טופס הרשמה לוובינר<br>
                                 <small>טופס HubSpot מוטמע — ראה מבנה טופס להלן</small>
                             </div>
 
                             <div class="wf-block">
-                                 Social Proof<br>
+                                💬 Social Proof<br>
                                 <small>מספר נרשמים · ציטוטים ממשתתפי וובינרים קודמים · לוגואים</small>
                             </div>
 
                             <div class="wf-block">
-                                 פלטפורמה טכנית<br>
+                                📺 פלטפורמה טכנית<br>
                                 <small>מידע על פלטפורמת השידור (Zoom / Teams / GoToWebinar) · דרישות טכניות</small>
                             </div>
 
                             <div class="wf-block footer-block">
-                                 Footer<br>
+                                🔗 Footer<br>
                                 <small>לוגו · קישורי רשתות חברתיות · מידע משפטי · קישור לאתר הראשי</small>
                             </div>
                         </div>
@@ -2105,7 +2076,7 @@
             <!-- ─── 4B: Webinar Registration Form ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#cffafe;color:#0891b2;"></div>
+                    <div class="card-icon" style="background:#cffafe;color:#0891b2;">📋</div>
                     <div>
                         <div class="card-title">טופס הרשמה — וובינר</div>
                         <div class="card-subtitle">Webinar Registration Form</div>
@@ -2121,7 +2092,7 @@
                         <div class="form-spec">
                             <div class="form-spec-header"
                                 style="background:linear-gradient(135deg,#0e7490 0%,#06b6d4 100%);">
-                                <div class="fs-icon"></div>
+                                <div class="fs-icon">📋</div>
                                 <div>
                                     <div class="fs-title">טופס הרשמה לוובינר</div>
                                     <div class="fs-subtitle">Webinar Registration Form · 7 שדות גלויים + 3 נסתרים</div>
@@ -2133,7 +2104,7 @@
                                 <div class="field-grid">
                                     <div class="field-row-pair">
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">🔤</div>
                                             <div class="f-details">
                                                 <div class="f-name">שם פרטי</div>
                                                 <div class="f-meta">HubSpot: firstname</div>
@@ -2144,7 +2115,7 @@
                                             </div>
                                         </div>
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">🔤</div>
                                             <div class="f-details">
                                                 <div class="f-name">שם משפחה</div>
                                                 <div class="f-meta">HubSpot: lastname</div>
@@ -2156,7 +2127,7 @@
                                         </div>
                                     </div>
                                     <div class="field-row">
-                                        <div class="f-icon email"></div>
+                                        <div class="f-icon email">📧</div>
                                         <div class="f-details">
                                             <div class="f-name">אימייל עסקי</div>
                                             <div class="f-meta">HubSpot: email · אימות פורמט אוטומטי</div>
@@ -2168,7 +2139,7 @@
                                     </div>
                                     <div class="field-row-pair">
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">🏢</div>
                                             <div class="f-details">
                                                 <div class="f-name">חברה / ארגון</div>
                                                 <div class="f-meta">HubSpot: company</div>
@@ -2179,7 +2150,7 @@
                                             </div>
                                         </div>
                                         <div class="field-row">
-                                            <div class="f-icon text"></div>
+                                            <div class="f-icon text">💼</div>
                                             <div class="f-details">
                                                 <div class="f-name">תפקיד</div>
                                                 <div class="f-meta">HubSpot: jobtitle</div>
@@ -2191,7 +2162,7 @@
                                         </div>
                                     </div>
                                     <div class="field-row">
-                                        <div class="f-icon text"></div>
+                                        <div class="f-icon text">📱</div>
                                         <div class="f-details">
                                             <div class="f-name">מספר טלפון</div>
                                             <div class="f-meta">HubSpot: phone</div>
@@ -2202,7 +2173,7 @@
                                         </div>
                                     </div>
                                     <div class="field-row">
-                                        <div class="f-icon dropdown"></div>
+                                        <div class="f-icon dropdown">📑</div>
                                         <div class="f-details">
                                             <div class="f-name">שאלה למרצה (מראש)</div>
                                             <div class="f-meta">Custom Property · טקסט חופשי</div>
@@ -2219,9 +2190,9 @@
                                 <div class="form-spec-section-label"><span class="dot"
                                         style="background:#94a3b8;"></span> שדות נסתרים (Hidden Fields)</div>
                                 <div class="hidden-fields-row">
-                                    <div class="hidden-chip"><span class="hc-icon">️‍️</span> UTM Source</div>
-                                    <div class="hidden-chip"><span class="hc-icon">️‍️</span> UTM Campaign</div>
-                                    <div class="hidden-chip"><span class="hc-icon">️‍️</span> UTM Medium</div>
+                                    <div class="hidden-chip"><span class="hc-icon">👁️‍🗨️</span> UTM Source</div>
+                                    <div class="hidden-chip"><span class="hc-icon">👁️‍🗨️</span> UTM Campaign</div>
+                                    <div class="hidden-chip"><span class="hc-icon">👁️‍🗨️</span> UTM Medium</div>
                                 </div>
 
                                 <div class="form-spec-divider"></div>
@@ -2270,7 +2241,7 @@
             <!-- ─── 4C: Webinar Emails ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#cffafe;color:#0891b2;">️</div>
+                    <div class="card-icon" style="background:#cffafe;color:#0891b2;">✉️</div>
                     <div>
                         <div class="card-title">תבניות מייל — וובינר</div>
                         <div class="card-subtitle">Webinar Email Templates (5 Templates)</div>
@@ -2286,13 +2257,13 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="email-wf">
-                            <div class="ewf-header"> לוגו + כותרת עליונה</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת עליונה</div>
                             <div class="ewf-body">
-                                <div class="ewf-block"> באנר / תמונת וובינר</div>
-                                <div class="ewf-block"> כותרת: הוזמנת לוובינר — [שם הוובינר]</div>
-                                <div class="ewf-block"> פרטי הוובינר: תאריך · שעה · משך · פלטפורמה</div>
-                                <div class="ewf-block"> מי ידבר: מרצים + נושאים</div>
-                                <div class="ewf-block"> מה תלמדו: 3-4 נקודות ערך מרכזיות</div>
+                                <div class="ewf-block">🎥 באנר / תמונת וובינר</div>
+                                <div class="ewf-block">📌 כותרת: הוזמנת לוובינר — [שם הוובינר]</div>
+                                <div class="ewf-block">📋 פרטי הוובינר: תאריך · שעה · משך · פלטפורמה</div>
+                                <div class="ewf-block">🎤 מי ידבר: מרצים + נושאים</div>
+                                <div class="ewf-block">📝 מה תלמדו: 3-4 נקודות ערך מרכזיות</div>
                                 <div class="ewf-cta">להרשמה לוובינר →</div>
                             </div>
                             <div class="ewf-footer">קישור להסרה · מידע משפטי · רשתות חברתיות</div>
@@ -2312,13 +2283,13 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="email-wf">
-                            <div class="ewf-header"> לוגו + כותרת עליונה</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת עליונה</div>
                             <div class="ewf-body">
-                                <div class="ewf-block"> {{contact.firstname}}, ההרשמה לוובינר אושרה!</div>
-                                <div class="ewf-block"> סיכום: שם הוובינר · תאריך · שעה · משך</div>
-                                <div class="ewf-block"> קישור כניסה לשידור (Join Link)</div>
-                                <div class="ewf-block"> הוספה ליומן (ICS / Google Calendar)</div>
-                                <div class="ewf-block"> דרישות טכניות / הכנה מקדימה</div>
+                                <div class="ewf-block">✅ {{contact.firstname}}, ההרשמה לוובינר אושרה!</div>
+                                <div class="ewf-block">📋 סיכום: שם הוובינר · תאריך · שעה · משך</div>
+                                <div class="ewf-block">🔗 קישור כניסה לשידור (Join Link)</div>
+                                <div class="ewf-block">📅 הוספה ליומן (ICS / Google Calendar)</div>
+                                <div class="ewf-block">📌 דרישות טכניות / הכנה מקדימה</div>
                                 <div class="ewf-cta">הוספה ליומן →</div>
                             </div>
                             <div class="ewf-footer">קישור להסרה · מידע משפטי · רשתות חברתיות</div>
@@ -2335,12 +2306,12 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="email-wf">
-                            <div class="ewf-header"> לוגו + כותרת עליונה</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת עליונה</div>
                             <div class="ewf-body">
                                 <div class="ewf-block">⏰ תזכורת: הוובינר מחר!</div>
-                                <div class="ewf-block"> תאריך · שעה · משך · נושא</div>
-                                <div class="ewf-block"> קישור כניסה לשידור</div>
-                                <div class="ewf-block"> בדקו חיבור אינטרנט ואודיו מראש</div>
+                                <div class="ewf-block">📋 תאריך · שעה · משך · נושא</div>
+                                <div class="ewf-block">🔗 קישור כניסה לשידור</div>
+                                <div class="ewf-block">📌 בדקו חיבור אינטרנט ואודיו מראש</div>
                                 <div class="ewf-cta">לפרטים המלאים →</div>
                             </div>
                             <div class="ewf-footer">קישור להסרה · מידע משפטי</div>
@@ -2357,10 +2328,10 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="email-wf">
-                            <div class="ewf-header"> לוגו + כותרת עליונה</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת עליונה</div>
                             <div class="ewf-body">
-                                <div class="ewf-block"> הוובינר מתחיל בעוד שעה!</div>
-                                <div class="ewf-block"> קישור כניסה ישירה לשידור</div>
+                                <div class="ewf-block">🔴 הוובינר מתחיל בעוד שעה!</div>
+                                <div class="ewf-block">🔗 קישור כניסה ישירה לשידור</div>
                                 <div class="ewf-cta">להצטרפות לוובינר →</div>
                             </div>
                             <div class="ewf-footer">קישור להסרה · מידע משפטי</div>
@@ -2377,13 +2348,13 @@
                     </button>
                     <div class="collapsible-content">
                         <div class="email-wf">
-                            <div class="ewf-header"> לוגו + כותרת עליונה</div>
+                            <div class="ewf-header">🏢 לוגו + כותרת עליונה</div>
                             <div class="ewf-body">
-                                <div class="ewf-block"> תודה שהשתתפת בוובינר — [שם הוובינר]</div>
-                                <div class="ewf-block"> קישור לצפייה בהקלטה</div>
-                                <div class="ewf-block"> מצגת / חומרי עזר להורדה</div>
-                                <div class="ewf-block"> תשובות לשאלות שלא הספקנו</div>
-                                <div class="ewf-block"> צעדים הבאים / תוכן נוסף רלוונטי</div>
+                                <div class="ewf-block">🙏 תודה שהשתתפת בוובינר — [שם הוובינר]</div>
+                                <div class="ewf-block">🎥 קישור לצפייה בהקלטה</div>
+                                <div class="ewf-block">📊 מצגת / חומרי עזר להורדה</div>
+                                <div class="ewf-block">❓ תשובות לשאלות שלא הספקנו</div>
+                                <div class="ewf-block">📌 צעדים הבאים / תוכן נוסף רלוונטי</div>
                                 <div class="ewf-cta">לצפייה בהקלטה →</div>
                             </div>
                             <div class="ewf-footer">קישור להסרה · מידע משפטי · רשתות חברתיות</div>
@@ -2406,27 +2377,27 @@
                 </div>
 
                 <div class="flow">
-                    <div class="flow-step trigger"> טריגר: שליחת טופס הרשמה לוובינר</div>
+                    <div class="flow-step trigger">🔵 טריגר: שליחת טופס הרשמה לוובינר</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> הוספה לרשימת נרשמים — [שם הוובינר]</div>
+                    <div class="flow-step action">✅ הוספה לרשימת נרשמים — [שם הוובינר]</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> עדכון Lifecycle Stage → Lead (אם ריק)</div>
+                    <div class="flow-step action">✅ עדכון Lifecycle Stage → Lead (אם ריק)</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step action"> עדכון Lead Source → Webinar (אם ריק)</div>
+                    <div class="flow-step action">✅ עדכון Lead Source → Webinar (אם ריק)</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step email">️ שליחת מייל אישור הרשמה + קישור כניסה</div>
+                    <div class="flow-step email">✉️ שליחת מייל אישור הרשמה + קישור כניסה</div>
                     <div class="flow-arrow">▼</div>
                     <div class="flow-step delay">⏳ המתנה עד [תאריך וובינר − 1 יום]</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step email">️ שליחת מייל תזכורת (יום לפני)</div>
+                    <div class="flow-step email">✉️ שליחת מייל תזכורת (יום לפני)</div>
                     <div class="flow-arrow">▼</div>
                     <div class="flow-step delay">⏳ המתנה עד [שעת וובינר − 1 שעה]</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step email">️ שליחת מייל תזכורת (שעה לפני)</div>
+                    <div class="flow-step email">✉️ שליחת מייל תזכורת (שעה לפני)</div>
                     <div class="flow-arrow">▼</div>
                     <div class="flow-step delay">⏳ המתנה עד [סיום וובינר + 1 יום]</div>
                     <div class="flow-arrow">▼</div>
-                    <div class="flow-step email">️ שליחת מייל Follow-up + הקלטה</div>
+                    <div class="flow-step email">✉️ שליחת מייל Follow-up + הקלטה</div>
                 </div>
 
                 <div class="callout warning">
@@ -2438,7 +2409,7 @@
             <!-- ─── 4E: Webinar Monitoring & Reports ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#cffafe;color:#0891b2;"></div>
+                    <div class="card-icon" style="background:#cffafe;color:#0891b2;">📊</div>
                     <div>
                         <div class="card-title">ניתור ודוחות — וובינר</div>
                         <div class="card-subtitle">Webinar Campaign Monitoring & Reports</div>
@@ -2522,7 +2493,7 @@
             <!-- ─── 4A: Base Email Template ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#fef3c7;color:#d97706;">️</div>
+                    <div class="card-icon" style="background:#fef3c7;color:#d97706;">✉️</div>
                     <div>
                         <div class="card-title">תבנית מייל בסיסית מעוצבת</div>
                         <div class="card-subtitle">Base Branded Email Template — Outlook Compatible</div>
@@ -2537,19 +2508,19 @@
                     <div class="collapsible-content open">
                         <div class="email-wf" style="max-width:480px;">
                             <div class="ewf-header">
-                                 Header<br>
+                                🏢 Header<br>
                                 <span style="font-weight:400;font-size:11px;">לוגו · ניווט עליון (אופציונלי) ·
                                     Pre-header text</span>
                             </div>
                             <div class="ewf-body">
-                                <div class="ewf-block" style="background:#e0f2fe;">️ באנר ויזואלי / תמונה ראשית</div>
-                                <div class="ewf-block"> כותרת ראשית (H1)<br><span
+                                <div class="ewf-block" style="background:#e0f2fe;">🖼️ באנר ויזואלי / תמונה ראשית</div>
+                                <div class="ewf-block">📌 כותרת ראשית (H1)<br><span
                                         style="font-size:10px;color:#94a3b8;">עם תמיכה ב-Personalization Token</span>
                                 </div>
-                                <div class="ewf-block"> גוף הטקסט<br><span style="font-size:10px;color:#94a3b8;">אזור
+                                <div class="ewf-block">📝 גוף הטקסט<br><span style="font-size:10px;color:#94a3b8;">אזור
                                         תוכן עיקרי — ניתן לעריכה ע״י צוות השיווק</span></div>
                                 <div class="ewf-cta">CTA ראשי →</div>
-                                <div class="ewf-block"> אזור תוכן משני (אופציונלי)<br><span
+                                <div class="ewf-block">📋 אזור תוכן משני (אופציונלי)<br><span
                                         style="font-size:10px;color:#94a3b8;">מידע נוסף / הפניות / תוכן רלוונטי</span>
                                 </div>
                             </div>
@@ -2566,7 +2537,7 @@
             <!-- ─── 4B: Outlook Compatibility ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#fef3c7;color:#d97706;">️</div>
+                    <div class="card-icon" style="background:#fef3c7;color:#d97706;">🖥️</div>
                     <div>
                         <div class="card-title">תאימות Outlook</div>
                         <div class="card-subtitle">Outlook Compatibility — Desktop, Web & Mobile</div>
@@ -2644,7 +2615,7 @@
             <!-- ─── 4C: Template Editing & Management ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#fef3c7;color:#d97706;">️</div>
+                    <div class="card-icon" style="background:#fef3c7;color:#d97706;">✏️</div>
                     <div>
                         <div class="card-title">יכולות עריכה וניהול תבניות</div>
                         <div class="card-subtitle">Template Editing & Management Capabilities</div>
@@ -2702,7 +2673,7 @@
             <!-- ─── 4D: Email Reports ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#fef3c7;color:#d97706;"></div>
+                    <div class="card-icon" style="background:#fef3c7;color:#d97706;">📊</div>
                     <div>
                         <div class="card-title">ניתור ודוחות — מיילים</div>
                         <div class="card-subtitle">Email Monitoring & Reports</div>
@@ -2781,7 +2752,7 @@
             <!-- ─── 5A: Behavioral Scoring ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#fee2e2;color:#dc2626;"></div>
+                    <div class="card-icon" style="background:#fee2e2;color:#dc2626;">🎯</div>
                     <div>
                         <div class="card-title">ניקוד התנהגותי (Interest)</div>
                         <div class="card-subtitle">Behavioral Scoring — Based on Actions</div>
@@ -2790,7 +2761,7 @@
 
                 <div class="score-grid">
                     <div class="score-card">
-                        <h4>️ אינטראקציה עם מיילים</h4>
+                        <h4>✉️ אינטראקציה עם מיילים</h4>
                         <div class="score-item">
                             <span>פתיחת מייל</span>
                             <span class="score-points score-positive">+1</span>
@@ -2806,7 +2777,7 @@
                     </div>
 
                     <div class="score-card">
-                        <h4> המרות</h4>
+                        <h4>📝 המרות</h4>
                         <div class="score-item">
                             <span>הרשמה לאירוע</span>
                             <span class="score-points score-positive">+15</span>
@@ -2822,7 +2793,7 @@
                     </div>
 
                     <div class="score-card">
-                        <h4> ביקורים באתר</h4>
+                        <h4>🌐 ביקורים באתר</h4>
                         <div class="score-item">
                             <span>ביקור בעמוד האתר</span>
                             <span class="score-points score-positive">+1</span>
@@ -2838,7 +2809,7 @@
                     </div>
 
                     <div class="score-card">
-                        <h4> מעורבות כללית</h4>
+                        <h4>📊 מעורבות כללית</h4>
                         <div class="score-item">
                             <span>שליחת טופס כלשהו</span>
                             <span class="score-points score-positive">+8</span>
@@ -2858,7 +2829,7 @@
             <!-- ─── 5B: Demographic Scoring ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#fee2e2;color:#dc2626;"></div>
+                    <div class="card-icon" style="background:#fee2e2;color:#dc2626;">👤</div>
                     <div>
                         <div class="card-title">ניקוד דמוגרפי/עסקי (Fit)</div>
                         <div class="card-subtitle">Demographic & Firmographic Scoring</div>
@@ -2867,7 +2838,7 @@
 
                 <div class="score-grid">
                     <div class="score-card">
-                        <h4> תפקיד / Job Title</h4>
+                        <h4>💼 תפקיד / Job Title</h4>
                         <div class="score-item">
                             <span>C-Level / VP</span>
                             <span class="score-points score-positive">+20</span>
@@ -2887,7 +2858,7 @@
                     </div>
 
                     <div class="score-card">
-                        <h4> גודל חברה</h4>
+                        <h4>🏢 גודל חברה</h4>
                         <div class="score-item">
                             <span>Enterprise (1000+ עובדים)</span>
                             <span class="score-points score-positive">+20</span>
@@ -2907,7 +2878,7 @@
                     </div>
 
                     <div class="score-card">
-                        <h4> תעשייה</h4>
+                        <h4>🏭 תעשייה</h4>
                         <div class="score-item">
                             <span>תעשייה יעד ראשית</span>
                             <span class="score-points score-positive">+15</span>
@@ -2923,7 +2894,7 @@
                     </div>
 
                     <div class="score-card">
-                        <h4> גיאוגרפיה</h4>
+                        <h4>🌍 גיאוגרפיה</h4>
                         <div class="score-item">
                             <span>ישראל</span>
                             <span class="score-points score-positive">+15</span>
@@ -2943,7 +2914,7 @@
             <!-- ─── 5C: Negative Scoring ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#fee2e2;color:#dc2626;"></div>
+                    <div class="card-icon" style="background:#fee2e2;color:#dc2626;">🚫</div>
                     <div>
                         <div class="card-title">ניקוד שלילי</div>
                         <div class="card-subtitle">Negative Scoring — Disqualification Signals</div>
@@ -2996,7 +2967,7 @@
             <!-- ─── 5D: Segmentation Thresholds ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#fee2e2;color:#dc2626;"></div>
+                    <div class="card-icon" style="background:#fee2e2;color:#dc2626;">📈</div>
                     <div>
                         <div class="card-title">סגמנטציה לפי ניקוד</div>
                         <div class="card-subtitle">Segmentation Thresholds — MQL / SQL Definitions</div>
@@ -3050,7 +3021,7 @@
             <!-- ─── 6A: Full Capability Matrix ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#f1f5f9;color:#475569;"></div>
+                    <div class="card-icon" style="background:#f1f5f9;color:#475569;">📋</div>
                     <div>
                         <div class="card-title">מטריצת יכולות לפי נכס</div>
                         <div class="card-subtitle">Asset Capability Matrix — Design, Edit, Use, Monitor, Report</div>
@@ -3070,71 +3041,71 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td> דפי נחיתה</td>
+                            <td>📄 דפי נחיתה</td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>Drag & Drop / Coded Templates · רספונסיבי · תבנית ממותגת</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>עריכה ע״י צוות השיווק · שינוי תוכן, תמונות, CTA · שכפול</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>פרסום LP לכל קמפיין · URL ממותג · שיתוף ברשתות · QR Code</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>צפיות · Submissions · Conversion Rate · Sources · בזמן אמת</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>דוח ביצועי LP · השוואת עמודים · מגמות · ייצוא</small>
                             </td>
                         </tr>
                         <tr>
-                            <td>️ מיילים</td>
+                            <td>✉️ מיילים</td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>Drag & Drop / HTML · תאימות Outlook · Personalization · באנרים</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>עריכת תוכן · שינוי נושא · עדכון CTAs · שימוש חוזר בתבנית</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>שליחה ידנית/מתוזמנת · אוטומטי (Workflow) · A/B Test · ניהול רשימות</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>Open Rate · CTR · Bounces · Unsubscribes · Heat Map · בזמן אמת</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>דוח לכל שליחה · מגמות · השוואה · Device Breakdown · ייצוא</small>
                             </td>
                         </tr>
                         <tr>
-                            <td> טפסים</td>
+                            <td>📋 טפסים</td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>Builder ויזואלי · שדות סטנדרטיים · Dependent Fields · CAPTCHA</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>הוספת/הסרת שדות · שינוי סדר · עדכון Validation · שינוי Thank-you</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>הטמעה ב-LP · Embed באתר חיצוני · Pop-up · Standalone Page</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>Submissions · Conversion Rate · שדות שלא מולאו · Drop-off</small>
                             </td>
                             <td>
-                                <span class="check"></span><br>
+                                <span class="check">✓</span><br>
                                 <small>דוח ביצועי טופס · השוואת טפסים · מגמות · ייצוא</small>
                             </td>
                         </tr>
@@ -3145,7 +3116,7 @@
             <!-- ─── 6B: Per Campaign Type Matrix ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#f1f5f9;color:#475569;">️</div>
+                    <div class="card-icon" style="background:#f1f5f9;color:#475569;">🗂️</div>
                     <div>
                         <div class="card-title">נכסים לפי סוג קמפיין</div>
                         <div class="card-subtitle">Assets per Campaign Type</div>
@@ -3156,52 +3127,52 @@
                     <thead>
                         <tr>
                             <th>נכס</th>
-                            <th> קמפיין אירוע</th>
-                            <th> קמפיין וובינר</th>
-                            <th> קמפיין ניוזלטר</th>
-                            <th> קמפיין נכס דיגיטלי</th>
+                            <th>🎯 קמפיין אירוע</th>
+                            <th>🎥 קמפיין וובינר</th>
+                            <th>📬 קמפיין ניוזלטר</th>
+                            <th>📥 קמפיין נכס דיגיטלי</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>דף נחיתה</strong></td>
-                            <td><span class="check"></span> דף הרשמה לאירוע</td>
-                            <td><span class="check"></span> דף הרשמה לוובינר</td>
+                            <td><span class="check">✓</span> דף הרשמה לאירוע</td>
+                            <td><span class="check">✓</span> דף הרשמה לוובינר</td>
                             <td><span class="partial">○</span> עמוד הרשמה (אופציונלי)</td>
-                            <td><span class="check"></span> דף הורדה Gated</td>
+                            <td><span class="check">✓</span> דף הורדה Gated</td>
                         </tr>
                         <tr>
                             <td><strong>טופס</strong></td>
-                            <td><span class="check"></span> טופס הרשמה</td>
-                            <td><span class="check"></span> טופס הרשמה לוובינר</td>
-                            <td><span class="check"></span> טופס הרשמה מינימלי</td>
-                            <td><span class="check"></span> טופס הורדה</td>
+                            <td><span class="check">✓</span> טופס הרשמה</td>
+                            <td><span class="check">✓</span> טופס הרשמה לוובינר</td>
+                            <td><span class="check">✓</span> טופס הרשמה מינימלי</td>
+                            <td><span class="check">✓</span> טופס הורדה</td>
                         </tr>
                         <tr>
                             <td><strong>מייל הזמנה/קידום</strong></td>
-                            <td><span class="check"></span> הזמנה לאירוע</td>
-                            <td><span class="check"></span> הזמנה לוובינר</td>
+                            <td><span class="check">✓</span> הזמנה לאירוע</td>
+                            <td><span class="check">✓</span> הזמנה לוובינר</td>
                             <td>—</td>
-                            <td><span class="check"></span> קידום הנכס</td>
+                            <td><span class="check">✓</span> קידום הנכס</td>
                         </tr>
                         <tr>
                             <td><strong>מייל אישור/מסירה</strong></td>
-                            <td><span class="check"></span> אישור הרשמה</td>
-                            <td><span class="check"></span> אישור + קישור כניסה</td>
+                            <td><span class="check">✓</span> אישור הרשמה</td>
+                            <td><span class="check">✓</span> אישור + קישור כניסה</td>
                             <td><span class="partial">○</span> Welcome (אופציונלי)</td>
-                            <td><span class="check"></span> מסירת הנכס</td>
+                            <td><span class="check">✓</span> מסירת הנכס</td>
                         </tr>
                         <tr>
                             <td><strong>מייל תזכורת</strong></td>
-                            <td><span class="check"></span> תזכורת יום לפני</td>
-                            <td><span class="check"></span> יום לפני + שעה לפני</td>
+                            <td><span class="check">✓</span> תזכורת יום לפני</td>
+                            <td><span class="check">✓</span> יום לפני + שעה לפני</td>
                             <td>—</td>
                             <td>—</td>
                         </tr>
                         <tr>
                             <td><strong>מייל Follow-up</strong></td>
-                            <td><span class="check"></span> הקלטה + חומרים</td>
-                            <td><span class="check"></span> הקלטה + מצגת + Q&A</td>
+                            <td><span class="check">✓</span> הקלטה + חומרים</td>
+                            <td><span class="check">✓</span> הקלטה + מצגת + Q&A</td>
                             <td>—</td>
                             <td>—</td>
                         </tr>
@@ -3209,29 +3180,29 @@
                             <td><strong>מייל ניוזלטר</strong></td>
                             <td>—</td>
                             <td>—</td>
-                            <td><span class="check"></span> גיליון תוכן</td>
+                            <td><span class="check">✓</span> גיליון תוכן</td>
                             <td>—</td>
                         </tr>
                         <tr>
                             <td><strong>Workflow אוטומטי</strong></td>
-                            <td><span class="check"></span> 6 שלבים</td>
-                            <td><span class="check"></span> 8 שלבים</td>
-                            <td><span class="check"></span> 4 שלבים</td>
-                            <td><span class="check"></span> 4 שלבים</td>
+                            <td><span class="check">✓</span> 6 שלבים</td>
+                            <td><span class="check">✓</span> 8 שלבים</td>
+                            <td><span class="check">✓</span> 4 שלבים</td>
+                            <td><span class="check">✓</span> 4 שלבים</td>
                         </tr>
                         <tr>
                             <td><strong>רשימה</strong></td>
-                            <td><span class="check"></span> סטטית — נרשמים</td>
-                            <td><span class="check"></span> סטטית — נרשמים לוובינר</td>
-                            <td><span class="check"></span> אקטיבית — מנויים</td>
-                            <td><span class="check"></span> סטטית — מורידים</td>
+                            <td><span class="check">✓</span> סטטית — נרשמים</td>
+                            <td><span class="check">✓</span> סטטית — נרשמים לוובינר</td>
+                            <td><span class="check">✓</span> אקטיבית — מנויים</td>
+                            <td><span class="check">✓</span> סטטית — מורידים</td>
                         </tr>
                         <tr>
                             <td><strong>דשבורד דוחות</strong></td>
-                            <td><span class="check"></span> 8 מדדים</td>
-                            <td><span class="check"></span> 10 מדדים</td>
-                            <td><span class="check"></span> 8 מדדים</td>
-                            <td><span class="check"></span> 7 מדדים</td>
+                            <td><span class="check">✓</span> 8 מדדים</td>
+                            <td><span class="check">✓</span> 10 מדדים</td>
+                            <td><span class="check">✓</span> 8 מדדים</td>
+                            <td><span class="check">✓</span> 7 מדדים</td>
                         </tr>
                     </tbody>
                 </table>
@@ -3240,7 +3211,7 @@
             <!-- ─── 6C: Summary Stats ─── -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-icon" style="background:#f1f5f9;color:#475569;"></div>
+                    <div class="card-icon" style="background:#f1f5f9;color:#475569;">📊</div>
                     <div>
                         <div class="card-title">סיכום כמותי — Go Live</div>
                         <div class="card-subtitle">Quantitative Summary for Go-Live</div>
