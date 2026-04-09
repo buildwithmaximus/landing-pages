@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HubSpot Migration Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #0F172A;
+      --secondary: #1E293B;
+      --cta: #22C55E;
+      --warning: #F59E0B;
+      --danger: #EF4444;
+      --accent: #38BDF8;
+      --bg: #020617;
+      --text: #F8FAFC;
+      --muted: #94A3B8;
+      --border: #1E293B;
+      --card: #0B1220;
+      --radius: 12px;
+      --transition: 220ms cubic-bezier(0.4,0,0.2,1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Fira Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 16px; }
+    nav { position: fixed; top:0; left:0; right:0; z-index:50; background: rgba(2,6,23,0.94); backdrop-filter: blur(10px); border-bottom:1px solid rgba(255,255,255,0.06); height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 2rem; }
+    .brand { display:flex; align-items:center; gap:10px; font-family:'Fira Code', monospace; font-size:.9rem; font-weight:600; }
+    .brand-mark { width: 12px; height: 12px; border-radius: 50%; background: var(--cta); box-shadow: 0 0 14px rgba(34,197,94,.65); }
+    .nav-links { display:flex; gap:1.5rem; list-style:none; }
+    .nav-links a { color: var(--muted); text-decoration:none; font-size:.85rem; transition: color var(--transition); }
+    .nav-links a:hover { color: var(--text); }
+    .hero { padding: 120px 2rem 72px; background: radial-gradient(circle at top right, rgba(56,189,248,.16), transparent 30%), linear-gradient(180deg, #07111f 0%, #020617 100%); }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .12em; font-size: .76rem; font-weight: 600; margin-bottom: 1rem; }
+    h1 { font-family:'Fira Code', monospace; font-size: clamp(2rem, 4vw, 3.4rem); line-height:1.08; margin-bottom:1rem; }
+    .subtitle { max-width: 760px; color: var(--muted); font-size: 1.05rem; margin-bottom: 2rem; }
+    .kpis { display:grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap:1px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden; }
+    .kpi { background: rgba(255,255,255,0.03); padding: 22px 24px; }
+    .kpi .value { font-family:'Fira Code', monospace; font-size:1.7rem; font-weight:700; }
+    .kpi .label { color: var(--muted); font-size:.78rem; margin-top:4px; }
+    .section { padding: 72px 2rem; }
+    .section-label { color: var(--accent); font-size:.78rem; font-weight:600; text-transform:uppercase; letter-spacing:.1em; margin-bottom:.75rem; }
+    .section h2 { font-family:'Fira Code', monospace; font-size: clamp(1.45rem, 2.5vw, 2rem); margin-bottom:.75rem; }
+    .section-desc { color: var(--muted); max-width: 760px; margin-bottom: 2rem; }
+    .grid { display:grid; gap:18px; }
+    .grid.cols-2 { grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); }
+    .grid.cols-3 { grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); }
+    .card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding: 22px; transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition); }
+    .card:hover { transform: translateY(-3px); border-color:#334155; box-shadow: 0 12px 30px rgba(0,0,0,.24); }
+    .card h3 { font-size:1rem; margin-bottom:.65rem; }
+    .card p, .card li { color: var(--muted); font-size:.92rem; }
+    .card ul { padding-left: 1rem; display:grid; gap:.35rem; }
+    .status-row { display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+    .status { border-radius:12px; padding:18px; border:1px solid var(--border); background: var(--card); }
+    .status.ok { border-left:3px solid var(--cta); }
+    .status.warn { border-left:3px solid var(--warning); }
+    .status.block { border-left:3px solid var(--danger); }
+    .status .title { font-size:.82rem; text-transform:uppercase; letter-spacing:.08em; color: var(--muted); }
+    .status .desc { margin-top:.45rem; font-size:.95rem; }
+    .timeline { display:grid; gap:14px; }
+    .timeline-item { display:grid; grid-template-columns: 120px 1fr; gap:18px; padding:18px 0; border-bottom:1px solid var(--border); }
+    .timeline-item:last-child { border-bottom:none; }
+    .timeline-date { font-family:'Fira Code', monospace; color: var(--accent); font-size:.82rem; }
+    .timeline-item h4 { font-size:1rem; margin-bottom:.35rem; }
+    .pill { display:inline-flex; align-items:center; gap:6px; padding:5px 10px; border-radius:999px; font-size:.74rem; font-weight:600; margin-right:8px; }
+    .pill.green { background: rgba(34,197,94,.12); color:#86EFAC; }
+    .pill.yellow { background: rgba(245,158,11,.12); color:#FCD34D; }
+    .pill.red { background: rgba(239,68,68,.12); color:#FCA5A5; }
+    .checklist { display:grid; gap:12px; }
+    .check { display:flex; gap:12px; align-items:flex-start; background: var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+    .check-mark { width:18px; height:18px; border-radius:50%; border:2px solid var(--accent); margin-top:2px; }
+    footer { padding: 46px 2rem; border-top:1px solid var(--border); text-align:center; color: var(--muted); }
+    @media (prefers-reduced-motion: no-preference) {
+      .observe { opacity:0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+      .observe.visible { opacity:1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      nav { padding:0 1rem; }
+      .nav-links { display:none; }
+      .hero, .section { padding-left:1rem; padding-right:1rem; }
+      .timeline-item { grid-template-columns: 1fr; gap:8px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand"><span class="brand-mark"></span> HubSpot Migration Command Center</div>
+    <ul class="nav-links">
+      <li><a href="#state">Current State</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#workstreams">Workstreams</a></li>
+      <li><a href="#blockers">Blockers</a></li>
+      <li><a href="#next">Next Moves</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Deloitte Israel · MarTech Migration · Apr 2026</div>
+      <h1>HubSpot Migration<br/>Command Center</h1>
+      <p class="subtitle">A decision-oriented summary of Deloitte Israel’s migration from Marketo to HubSpot — including timeline, stakeholders, blockers, workstreams, and the minimum set of actions needed to get to go-live before the Marketo deadline.</p>
+      <div class="kpis">
+        <div class="kpi"><div class="value">May 30</div><div class="label">Marketo end date</div></div>
+        <div class="kpi"><div class="value">5</div><div class="label">Parallel workstreams</div></div>
+        <div class="kpi"><div class="value">4</div><div class="label">Critical unblock tracks</div></div>
+        <div class="kpi"><div class="value">3</div><div class="label">Core campaign types</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section observe" id="state">
+    <div class="container">
+      <div class="section-label">Current State</div>
+      <h2>In progress, but partially blocked</h2>
+      <p class="section-desc">The project has moved from POC → contract → onboarding → implementation. It is now constrained by access, privacy, consent-safe migration, technical dependencies, and cross-team coordination.</p>
+      <div class="status-row">
+        <div class="status warn"><div class="title">Project status</div><div class="desc">⚠️ In progress. Timeline is still recoverable, but only if blockers close in parallel.</div></div>
+        <div class="status block"><div class="title">Main risks</div><div class="desc">SSO access, consent migration, DPA/privacy approvals, tracking dependencies, and delayed internal inputs.</div></div>
+        <div class="status ok"><div class="title">Hard target</div><div class="desc">Go-live before Marketo is decommissioned. Early May is the operational target, May 30 is the hard commercial limit.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section observe" id="timeline">
+    <div class="container">
+      <div class="section-label">Timeline</div>
+      <h2>From discovery to implementation</h2>
+      <p class="section-desc">The project has been active since late 2025. This timeline compresses the key moments that shaped the current state.</p>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-date">2025-11-23</div><div><h4>Kickoff and requirements Q&A</h4><p>Initial discovery with HubSpot. Marketo contract end in May 2026 established as the hard migration deadline.</p></div></div>
+        <div class="timeline-item"><div class="timeline-date">2025-12-18</div><div><h4>Demo and POC planning</h4><p>HubSpot demo completed. Decision made to engage Penguin Strategies for a proof of concept.</p></div></div>
+        <div class="timeline-item"><div class="timeline-date">2026-02-09 → 02-26</div><div><h4>SOW, review, and contract adjustments</h4><p>Detailed SOW delivered, scope gaps raised, milestone-based payment negotiated, DPA path agreed.</p></div></div>
+        <div class="timeline-item"><div class="timeline-date">Mid-Mar 2026</div><div><h4>Formal kickoff and weekly syncs</h4><p>Sunday sync meetings established. Early May confirmed as the operational go-live target.</p></div></div>
+        <div class="timeline-item"><div class="timeline-date">2026-03-12 → 03-30</div><div><h4>Compliance escalation and technical setup</h4><p>Consent migration issue escalates. HubSpot access granted late March. DNS / DKIM and SSO setup begin.</p></div></div>
+        <div class="timeline-item"><div class="timeline-date">Early Apr 2026</div><div><h4>Onboarding and approvals</h4><p>Teams and permissions work starts. AI documentation enters review. Technical, legal, and marketing dependencies remain open.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section observe" id="workstreams">
+    <div class="container">
+      <div class="section-label">Program Structure</div>
+      <h2>Five parallel workstreams</h2>
+      <p class="section-desc">The migration should be managed as a program, not a single setup task. These are the five tracks that need coordination.</p>
+      <div class="grid cols-2">
+        <div class="card"><h3>1. Commercial / Vendor</h3><p>Penguin selected, SOW revised, milestone payments agreed, DPA path established, support model defined.</p></div>
+        <div class="card"><h3>2. Privacy / Consent / Legal</h3><p>External contact migration, DPA signature, data residency, AI opt-out, and formal rules for user/integration handling.</p></div>
+        <div class="card"><h3>3. Technical Setup</h3><p>HubSpot access, SSO, DNS / DKIM, tracking code, Adobe Analytics, office IP exclusions, and environment readiness.</p></div>
+        <div class="card"><h3>4. Content / Asset Rebuild</h3><p>New assets in HubSpot, not blind Marketo copying. Campaign templates, forms, landing pages, automations, and reporting setup.</p></div>
+        <div class="card"><h3>5. Enablement / Go-Live</h3><p>Testing, training, user onboarding, CSM coordination, marketer readiness, dashboards, and contingency planning.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section observe" id="blockers">
+    <div class="container">
+      <div class="section-label">Blockers</div>
+      <h2>What is still holding the migration back</h2>
+      <p class="section-desc">These are the issues that still matter operationally. They are the right control panel for weekly management.</p>
+      <div class="grid cols-3">
+        <div class="card"><h3><span class="pill red">Blocked</span>Access</h3><ul><li>HubSpot SSO still not fully resolved</li><li>Nofar cannot fully access the system</li><li>Asana board access also blocked</li></ul></div>
+        <div class="card"><h3><span class="pill red">Blocked</span>Privacy</h3><ul><li>External contact migration still not legally cleared</li><li>DPA signature pending</li><li>Data residency clarification required</li><li>AI opt-out still needs formal closure</li></ul></div>
+        <div class="card"><h3><span class="pill yellow">At risk</span>Technical</h3><ul><li>Adobe Analytics code not yet added</li><li>HubSpot tracking code pending approval</li><li>Internal IP exclusion list unfinished</li><li>DNS / DKIM timing matters for testing</li></ul></div>
+        <div class="card"><h3><span class="pill yellow">At risk</span>Assets</h3><ul><li>Brand assets still not delivered</li><li>Internal feedback on campaign structures has been slow</li><li>Asset inventory must be finalized</li></ul></div>
+        <div class="card"><h3><span class="pill yellow">At risk</span>Schedule</h3><ul><li>Late access reduced schedule slack</li><li>Holiday timing compressed execution</li><li>Go-live window is still tight</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section observe">
+    <div class="container">
+      <div class="section-label">Stakeholders</div>
+      <h2>Who matters most</h2>
+      <p class="section-desc">The project depends on a small group of operational owners. This is the real coordination map.</p>
+      <div class="grid cols-2">
+        <div class="card"><h3>Deloitte</h3><ul><li><strong>Nofar Vinter</strong> — product owner, SSO, AI opt-out, escalation</li><li><strong>Natan Yagodaev</strong> — MarTech lead, tracking, analytics, assets, permissions</li><li><strong>Ravit Mor</strong> — procurement and payment milestones</li><li><strong>Shmulik Lavi / Limor Ram / Gabriela Shpigelman</strong> — privacy and legal closure</li><li><strong>Oren Kremer</strong> — executive sponsor</li></ul></div>
+        <div class="card"><h3>External</h3><ul><li><strong>Penguin Strategies</strong> — implementation partner</li><li><strong>Mark Fisher</strong> — technical lead, AI, tracking, analytics</li><li><strong>David Harris</strong> — delivery / coordination</li><li><strong>Mor Gold</strong> — CRM setup, teams, permissions</li><li><strong>Adi Dubin</strong> — HubSpot account / CSM side</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section observe" id="next">
+    <div class="container">
+      <div class="section-label">Next Moves</div>
+      <h2>The minimum path to unblock go-live</h2>
+      <p class="section-desc">If the team does only the highest-leverage work next, this is the order that matters.</p>
+      <div class="checklist">
+        <div class="check"><div class="check-mark"></div><div><strong>Resolve SSO access first</strong><br><span style="color:var(--muted)">Without access, configuration and validation stay artificially slow.</span></div></div>
+        <div class="check"><div class="check-mark"></div><div><strong>Close privacy as a formal decision track</strong><br><span style="color:var(--muted)">DPA, consent rules, AI opt-out, and external contact policy need explicit closure.</span></div></div>
+        <div class="check"><div class="check-mark"></div><div><strong>Finish technical prerequisites</strong><br><span style="color:var(--muted)">Adobe Analytics, tracking approval, IP exclusions, DNS / DKIM, and environment readiness.</span></div></div>
+        <div class="check"><div class="check-mark"></div><div><strong>Run the project as one command center</strong><br><span style="color:var(--muted)">Manage blockers as one weekly control panel instead of scattered email threads.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    HubSpot Migration Command Center · Deloitte Israel · Built with Clawdius Maximus · Apr 2026<br>
+    <a href="/landing-pages/" style="color:#94A3B8; text-decoration:none; margin-top:12px; display:inline-block;">Back to library</a>
+  </footer>
+
+  <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.observe').forEach(el => observer.observe(el));
+    }
+  </script>
+</body>
+</html>
